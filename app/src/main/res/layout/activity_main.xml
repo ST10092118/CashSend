@@ -1,0 +1,103 @@
+<!-- res/layout/activity_main.xml -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- "More" Button for future features -->
+    <ImageButton
+        android:id="@+id/more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/menu"
+    android:contentDescription="More options"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="16dp" />
+
+    <!-- Bank Cards Block -->
+    <Button
+        android:id="@+id/btn_cards"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="CARDS"
+        android:drawableTop="@drawable/cards"
+    android:backgroundTint="@color/blue"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/btn_notifications"
+    app:layout_constraintWidth_percent="0.5"
+    app:layout_constraintHeight_percent="0.4"
+    android:textColor="@android:color/white"
+    android:layout_margin="8dp" />
+
+    <!-- Notifications Block -->
+    <Button
+        android:id="@+id/btn_notifications"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="NOTIFICATIONS"
+        android:drawableTop="@drawable/notifications"
+    android:backgroundTint="@color/red"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/btn_cards"
+    app:layout_constraintWidth_percent="0.5"
+    app:layout_constraintHeight_percent="0.4"
+    android:textColor="@android:color/white"
+    android:layout_margin="8dp" />
+
+    <!-- QR Code Scanner in the center -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_qr_scanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/qrcode"
+    android:contentDescription="QR code scanner"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:tint="@android:color/black"
+    app:backgroundTint="@color/white"
+    android:elevation="4dp" />
+
+    <!-- User Profile Block -->
+    <Button
+        android:id="@+id/btn_profile"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="ME"
+        android:drawableTop="@drawable/person"
+    android:backgroundTint="@color/red"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/btn_settings"
+    app:layout_constraintWidth_percent="0.5"
+    app:layout_constraintHeight_percent="0.4"
+    android:textColor="@android:color/white"
+    android:layout_margin="8dp" />
+
+    <!-- Settings Block -->
+    <Button
+        android:id="@+id/btn_settings"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="SETTINGS"
+        android:drawableTop="@drawable/settings"
+    android:backgroundTint="@color/blue"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/btn_profile"
+    app:layout_constraintWidth_percent="0.5"
+    app:layout_constraintHeight_percent="0.4"
+    android:textColor="@android:color/white"
+    android:layout_margin="8dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
