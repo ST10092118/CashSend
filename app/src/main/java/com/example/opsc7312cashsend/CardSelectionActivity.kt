@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.OPSC7312CashSend.R
 import com.example.opsc7312cashsend.adapters.CardAdapter
 
 class CardSelectionActivity : AppCompatActivity() {

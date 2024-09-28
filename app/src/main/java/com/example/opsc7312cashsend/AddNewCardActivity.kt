@@ -1,11 +1,13 @@
 package com.example.opsc7312cashsend
 
+import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.OPSC7312CashSend.R
 import com.example.opsc7312cashsend.models.Card
 
 class AddNewCardActivity : AppCompatActivity() {
@@ -15,6 +17,7 @@ class AddNewCardActivity : AppCompatActivity() {
     private lateinit var etExpirationDate: EditText
     private lateinit var etCVV: EditText
     private lateinit var btnAddCard: Button
+    private lateinit var btnBack: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,10 +29,16 @@ class AddNewCardActivity : AppCompatActivity() {
         etExpirationDate = findViewById(R.id.et_expiration_date)
         etCVV = findViewById(R.id.et_cvv)
         btnAddCard = findViewById(R.id.btn_add_card)
+        btnBack = findViewById(R.id.btn_back) // Initialize the back button
 
         // Add button click listener
         btnAddCard.setOnClickListener {
             addCard()
+        }
+
+        // Back button click listener
+        btnBack.setOnClickListener {
+            navigateToHomeScreen()
         }
     }
 
@@ -47,16 +56,16 @@ class AddNewCardActivity : AppCompatActivity() {
 
             // Show confirmation and close activity
             Toast.makeText(this, "Card added successfully", Toast.LENGTH_SHORT).show()
-            finish() // Return to the previous screen (CardSelectionActivity)
+            finish() // Return to the previous screen (e.g., CardSelectionActivity)
         }
     }
 
     private fun validateCardDetails(cardNumber: String, cardName: String, expirationDate: String, cvv: String): Boolean {
-        if (cardNumber.length != 16 || !TextUtils.isDigitsOnly(cardNumber)) {
+        if (cardNumber.length != 16) {
             etCardNumber.error = "Enter a valid 16-digit card number"
             return false
         }
-        if (TextUtils.isEmpty(cardName)) {
+        if (cardName.isEmpty()) {
             etCardName.error = "Enter the cardholder's name"
             return false
         }
@@ -64,13 +73,17 @@ class AddNewCardActivity : AppCompatActivity() {
             etExpirationDate.error = "Enter a valid expiration date (MM/YY)"
             return false
         }
-        if (cvv.length != 3 || !TextUtils.isDigitsOnly(cvv)) {
+        if (cvv.length != 3) {
             etCVV.error = "Enter a valid 3-digit CVV"
             return false
         }
         return true
     }
+
+    private fun navigateToHomeScreen() {
+        val intent = Intent(this, HomeScreenActivity::class.java)
+        startActivity(intent)
+        finish() // Close the current activity to prevent going back to it
+    }
 }
-
-
 

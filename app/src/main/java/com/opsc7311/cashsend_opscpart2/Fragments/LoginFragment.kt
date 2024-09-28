@@ -1,5 +1,6 @@
 package com.opsc7311.cashsend_opscpart2.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,13 +10,16 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.OPSC7312CashSend.R
+import com.example.opsc7312cashsend.HomeScreenActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.opsc7311.cashsend_opscpart2.MainActivity
-import com.opsc7311.cashsend_opscpart2.R
+
 
 class LoginFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,7 +64,7 @@ class LoginFragment : Fragment() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
-                    navigateToProfileDetails();
+                    navigateToHomeScreen();
                 } else {
                     Toast.makeText(requireContext(), "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
@@ -68,15 +72,10 @@ class LoginFragment : Fragment() {
 
         }
 
-    private fun navigateToProfileDetails() {
-        val profileDetailsFragment = ProfileDetailsFragment()
-        val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        transaction.replace(
-            R.id.fragment_container_view,
-            profileDetailsFragment
-        ) // Use your fragment container ID
-        transaction.addToBackStack(null) // Optional: to allow back navigation
-        transaction.commit()
+    private fun navigateToHomeScreen() {
+        val intent = Intent(requireActivity(), HomeScreenActivity::class.java)
+        startActivity(intent)
+        requireActivity().finish() // Optional: Call this to close the LoginActivity
     }
 }
 

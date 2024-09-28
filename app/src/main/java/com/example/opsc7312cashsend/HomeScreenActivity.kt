@@ -1,5 +1,6 @@
 package com.example.opsc7312cashsend
 
+import MyAccountFragment
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -9,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.OPSC7312CashSend.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class MainActivity : AppCompatActivity() {
+class HomeScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +49,12 @@ class MainActivity : AppCompatActivity() {
 
         // User profile block click listener
         btnProfile.setOnClickListener {
-            Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show()
+
+            val myAccountFragment = MyAccountFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container_view, myAccountFragment) // Use the ID of your fragment container
+                .addToBackStack(null) // Optional: allows the user to navigate back
+                .commit()
         }
 
         // Settings block click listener - Navigate to SettingsActivity

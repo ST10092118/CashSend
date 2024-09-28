@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 
 
-class ProfileDetailsFragment : Fragment() {
+class MyAccountFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
@@ -48,7 +48,7 @@ class ProfileDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_profile_details, container, false)
+        val view = inflater.inflate(R.layout.fragment_my_account, container, false)
 
         // Initialize Firebase
         auth = FirebaseAuth.getInstance()

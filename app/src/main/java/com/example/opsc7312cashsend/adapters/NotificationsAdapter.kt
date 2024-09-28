@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.OPSC7312CashSend.R
 
 class NotificationsAdapter(private var notificationList: List<Notification>) :
     RecyclerView.Adapter<NotificationsAdapter.ViewHolder>() {

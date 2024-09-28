@@ -3,10 +3,10 @@ package com.example.opsc7312cashsend.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.opsc7312cashsend.R
+import com.example.OPSC7312CashSend.R
 import com.example.opsc7312cashsend.models.Card
 
 class CardAdapter(private val cardList: List<Card>, private val onCardSelected: (Card) -> Unit) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {

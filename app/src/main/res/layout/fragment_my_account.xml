@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/white">
 
     <!-- Back Arrow -->
     <ImageView
@@ -62,13 +63,6 @@
             android:hint="First Name"
             android:layout_weight="1" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="EDIT"
-            android:textColor="@color/redColor"
-            android:paddingStart="8dp"
-            android:gravity="center"/>
     </LinearLayout>
 
     <!-- Last Name Field -->
@@ -86,13 +80,6 @@
             android:hint="Last Name"
             android:layout_weight="1" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="EDIT"
-            android:textColor="@color/redColor"
-            android:paddingStart="8dp"
-            android:gravity="center"/>
     </LinearLayout>
 
     <!-- Date of Birth Field -->
@@ -110,13 +97,6 @@
             android:hint="Date of Birth"
             android:layout_weight="1" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="EDIT"
-            android:textColor="@color/redColor"
-            android:paddingStart="8dp"
-            android:gravity="center"/>
     </LinearLayout>
 
     <!-- Email/Username Field -->
@@ -134,13 +114,6 @@
             android:hint="Email/Username"
             android:layout_weight="1" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="EDIT"
-            android:textColor="@color/redColor"
-            android:paddingStart="8dp"
-            android:gravity="center"/>
     </LinearLayout>
 
     <!-- Password Field -->
@@ -159,13 +132,6 @@
             android:layout_weight="1"
             android:inputType="textPassword" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="EDIT"
-            android:textColor="@color/redColor"
-            android:paddingStart="8dp"
-            android:gravity="center"/>
     </LinearLayout>
 
     <!-- Mobile Number Field -->
@@ -184,13 +150,6 @@
             android:layout_weight="1"
             android:layout_marginTop="-10dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="EDIT"
-            android:textColor="@color/redColor"
-            android:paddingStart="8dp"
-            android:gravity="center"/>
     </LinearLayout>
 
     <!-- Save Button -->
