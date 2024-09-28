@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "433516101094",
+    "project_id": "opscpart2-cashsend-cf687",
+    "storage_bucket": "opscpart2-cashsend-cf687.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433516101094:android:cbde040160f64610266a27",
+        "android_client_info": {
+          "package_name": "com.opsc7311.cashsend_opscpart2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT5ecHrJasn6C6Y9QIdxoZ7VBlZ3KPLI4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
