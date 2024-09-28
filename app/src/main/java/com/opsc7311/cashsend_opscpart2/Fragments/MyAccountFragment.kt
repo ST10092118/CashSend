@@ -1,4 +1,3 @@
-package com.opsc7311.cashsend_opscpart2.Fragments
 
 import android.content.Intent
 import android.net.Uri
@@ -15,11 +14,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.example.OPSC7312CashSend.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
-import com.opsc7311.cashsend_opscpart2.R
-import com.opsc7311.cashsend_opscpart2.R.id.tv_edit_profile_picture
+
 
 class ProfileDetailsFragment : Fragment() {
 
@@ -62,7 +65,7 @@ class ProfileDetailsFragment : Fragment() {
         profileImageView = view.findViewById(R.id.iv_profile_icon)
         btnSave = view.findViewById(R.id.btn_save)
         ivBackArrow = view.findViewById(R.id.iv_back_arrow)
-        btnEditPicture = view.findViewById(tv_edit_profile_picture)
+        btnEditPicture = view.findViewById(R.id.tv_edit_profile_picture)
 
         // Fetch user details from Firebase and display them
         fetchUserProfileDetails()
@@ -205,3 +208,4 @@ class ProfileDetailsFragment : Fragment() {
             }
     }
 }
+

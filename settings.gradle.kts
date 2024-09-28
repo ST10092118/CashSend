@@ -7,9 +7,10 @@ pluginManagement {
                 includeGroupByRegex("androidx.*")
             }
         }
+        google()
         mavenCentral()
         gradlePluginPortal()
-        gradlePluginPortal()
+
     }
 }
 dependencyResolutionManagement {
@@ -20,6 +21,10 @@ dependencyResolutionManagement {
     }
 }
 
+
 rootProject.name = "Cashsend_opscpart2"
+
+rootProject.name = "OPSC7312CashSend"
+
 include(":app")
  
