@@ -75,7 +75,7 @@ android {
 
         implementation(libs.androidx.navigation.fragment.ktx)
         implementation(libs.androidx.navigation.ui.ktx)
-        //implementation ("com.google.android.gms:play-services-auth:21.2.0")
+        implementation ("com.google.android.gms:play-services-auth:21.2.0")
     }
 }
 dependencies {

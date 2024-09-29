@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name">Cashsend_opscpart2</string>
+    <string name="web_client_id">433516101094-2muq1hlr39s22fn672j7beeursrkgth4.apps.googleusercontent.com</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
