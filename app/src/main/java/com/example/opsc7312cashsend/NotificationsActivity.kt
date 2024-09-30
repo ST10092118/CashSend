@@ -31,6 +31,11 @@ class NotificationsActivity : AppCompatActivity() {
         // Set up RecyclerView
         notificationsRecyclerView = findViewById(R.id.rv_notifications)
         notificationsRecyclerView.layoutManager = LinearLayoutManager(this)
+        //code was adapted from stack overflow
+        //https://stackoverflow.com/questions/71572908/recycle-view-android-studio-search-well-but-just-shows-1-item
+        //patel-vicky
+        //https://stackoverflow.com/users/6143944/patel-vicky
+
 
         noNotificationsTextView = findViewById(R.id.tv_no_notifications)
 
@@ -49,6 +54,10 @@ class NotificationsActivity : AppCompatActivity() {
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
+            //Code was adapted from stack Overflow
+            //https://stackoverflow.com/questions/48615980/how-to-set-active-date-tommorow-in-datepicker-android-studio
+            //Mahesh Vayak
+            //https://stackoverflow.com/users/8143436/mahesh-vayak
 
             // Create and show a DatePickerDialog
             val datePickerDialog = DatePickerDialog(
@@ -65,6 +74,11 @@ class NotificationsActivity : AppCompatActivity() {
                 year, month, day
             )
             datePickerDialog.show()
+
+            //Code was adapted from stack Overflow
+            //https://stackoverflow.com/questions/48615980/how-to-set-active-date-tommorow-in-datepicker-android-studio
+            //Mahesh Vayak
+            //https://stackoverflow.com/users/8143436/mahesh-vayak
         }
     }
 
@@ -74,7 +88,7 @@ class NotificationsActivity : AppCompatActivity() {
         }
 
         if (filteredNotifications.isEmpty()) {
-            // No notifications for this date, show a suitable message
+            // No notifications for this date, shows a suitable message
             noNotificationsTextView.visibility = TextView.VISIBLE
             notificationsRecyclerView.visibility = RecyclerView.GONE
         } else {

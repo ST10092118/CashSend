@@ -43,8 +43,8 @@ class HomeScreenActivity : AppCompatActivity() {
 
         // QR code scanner button click listener
         btnQRScanner.setOnClickListener {
-            val intent = Intent(this, QrScannerActivity::class.java)
-            startActivity(intent)
+            Toast.makeText(this, "QR Code scanner clicked", Toast.LENGTH_SHORT).show()
+            // Open QR code scanner activity here
         }
 
         // User profile block click listener

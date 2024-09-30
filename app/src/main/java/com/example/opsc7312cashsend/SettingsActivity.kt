@@ -32,24 +32,44 @@ class SettingsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true) // Enable back button
         toolbar.setNavigationOnClickListener {
             finish() // Navigate back to the previous screen
+
+            //code was adapted from stack overflow
+            //https://stackoverflow.com/questions/52844923/button-click-listener-in-fragment-android-studio
+            //Ben Bloodworth
+            //https://stackoverflow.com/users/5152586/ben-bloodworth
         }
 
         // Theme Button
         val themeBlock = findViewById<LinearLayout>(R.id.theme_block)
         themeBlock.setOnClickListener {
             Toast.makeText(this, "This feature will be available soon!", Toast.LENGTH_SHORT).show()
+
+            //code was adapted from stack overflow
+            //https://stackoverflow.com/questions/52844923/button-click-listener-in-fragment-android-studio
+            //Ben Bloodworth
+            //https://stackoverflow.com/users/5152586/ben-bloodworth
         }
 
         // Language Button
         val languageBlock = findViewById<LinearLayout>(R.id.language_block)
         languageBlock.setOnClickListener {
             Toast.makeText(this, "This feature will be available soon!", Toast.LENGTH_SHORT).show()
+
+            //code was adapted from stack overflow
+            //https://stackoverflow.com/questions/52844923/button-click-listener-in-fragment-android-studio
+            //Ben Bloodworth
+            //https://stackoverflow.com/users/5152586/ben-bloodworth
         }
 
         // Currency Button
         val currencyBlock = findViewById<LinearLayout>(R.id.currency_block)
         currencyBlock.setOnClickListener {
             Toast.makeText(this, "This feature will be available soon!", Toast.LENGTH_SHORT).show()
+
+            //code was adapted from stack overflow
+            //https://stackoverflow.com/questions/52844923/button-click-listener-in-fragment-android-studio
+            //Ben Bloodworth
+            //https://stackoverflow.com/users/5152586/ben-bloodworth
         }
 
         // Log out Button
@@ -66,11 +86,20 @@ class SettingsActivity : AppCompatActivity() {
                     intent.putExtra("showLoginFragment", true) // Pass flag to show LoginFragment
                     startActivity(intent) // Navigate to MainActivity
 
+                    //code was adapted from Stack Overflow
+                    //https://stackoverflow.com/questions/17524160/how-to-implement-log-out-functionality
+                    //KOTIOS
+                    //https://stackoverflow.com/users/1508671/kotios
                 } else {
                     Toast.makeText(this@SettingsActivity, "Sign out failed", Toast.LENGTH_SHORT).show()
                 }
             }
         }
+
+        //code was adapted from stack overflow
+        //https://stackoverflow.com/questions/52844923/button-click-listener-in-fragment-android-studio
+        //Ben Bloodworth
+        //https://stackoverflow.com/users/5152586/ben-bloodworth
     }
 }
 

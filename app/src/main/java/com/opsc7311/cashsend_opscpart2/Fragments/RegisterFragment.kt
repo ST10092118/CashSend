@@ -49,6 +49,11 @@ class RegisterFragment : Fragment() {
             val dateOfBirth = dateOfBirthInput.text.toString().trim() // Updated variable name
             val mobileNumber = mobileNumberInput.text.toString().trim()
 
+            //code was adapted from stack overflow
+            //https://stackoverflow.com/questions/52844923/button-click-listener-in-fragment-android-studio
+            //Ben Bloodworth
+            //https://stackoverflow.com/users/5152586/ben-bloodworth
+
             if (emailUsername.isNotEmpty() && password.isNotEmpty() && firstName.isNotEmpty() &&
                 lastName.isNotEmpty() && dateOfBirth.isNotEmpty() && mobileNumber.isNotEmpty()) {
                 registerUser(emailUsername, password, firstName, lastName, dateOfBirth, mobileNumber) // Updated method call
@@ -72,6 +77,10 @@ class RegisterFragment : Fragment() {
         transaction.replace(R.id.fragment_container_view, loginFragment)
         transaction.addToBackStack(null)
         transaction.commit()
+        //code was adapted from stack overflow
+        //https://stackoverflow.com/questions/3724509/going-to-home-screen-programmatically
+        //jim
+        //https://stackoverflow.com/users/3222339/jim
     }
 
     private fun registerUser(email: String, password: String, firstName: String, lastName: String, dateOfBirth: String, mobileNumber: String) {
@@ -108,4 +117,9 @@ class RegisterFragment : Fragment() {
                 }
             }
     }
+
+    //code was adapted from stack overflow
+    //https://stackoverflow.com/questions/33720614/what-is-firebase-and-how-to-use-it-in-android/33721121#33721121
+    //Sagar D
+    //https://stackoverflow.com/users/3825788/sagar-d
 }
