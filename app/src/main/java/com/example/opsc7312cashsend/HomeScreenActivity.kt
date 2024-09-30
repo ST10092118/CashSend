@@ -35,7 +35,7 @@ class HomeScreenActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Notifications block click listener - Navigate to NotificationsActivity
+        // Navigate to Notifications Block on Home Screen
         btnNotifications.setOnClickListener {
             val intent = Intent(this, NotificationsActivity::class.java)
             startActivity(intent)
