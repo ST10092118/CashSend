@@ -30,6 +30,10 @@ class AddNewCardActivity : AppCompatActivity() {
         etCVV = findViewById(R.id.et_cvv)
         btnAddCard = findViewById(R.id.btn_add_card)
         btnBack = findViewById(R.id.btn_back) // Initialize the back button
+        //This code was adapted from Stack Overflow
+        //https://stackoverflow.com/questions/68339418/cannot-resolve-symbol-viewholder-java-android-studio
+        //Brett Hudson
+        //https://stackoverflow.com/users/14602853/brett-hudson
 
         // Add button click listener
         btnAddCard.setOnClickListener {
@@ -47,6 +51,10 @@ class AddNewCardActivity : AppCompatActivity() {
         val cardName = etCardName.text.toString()
         val expirationDate = etExpirationDate.text.toString()
         val cvv = etCVV.text.toString()
+        //This code was adapted from Stack Overflow
+        //https://stackoverflow.com/questions/68339418/cannot-resolve-symbol-viewholder-java-android-studio
+        //Brett Hudson
+        //https://stackoverflow.com/users/14602853/brett-hudson
 
         // Validate card details
         if (validateCardDetails(cardNumber, cardName, expirationDate, cvv)) {
@@ -78,6 +86,8 @@ class AddNewCardActivity : AppCompatActivity() {
             return false
         }
         return true
+        //This code was adapted from Stack Overflow
+        //https://medium.com/@boyrazgiray/how-to-catch-handle-exceptions-globally-in-android-d3447064df14
     }
 
     private fun navigateToHomeScreen() {

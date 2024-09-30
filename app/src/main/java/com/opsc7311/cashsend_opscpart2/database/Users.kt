@@ -5,5 +5,11 @@ data class Users(
     val lastName: String? = null,
     val dateOfBirth: String? = null, // Changed from address to dateOfBirth
     val mobileNumber: String? = null,
-    val profilePictureUrl: String? = null // This field can be retained if you plan to use it
+    val profilePictureUrl: String? = null
+
+    //This code was adapted from Stack Overflow
+    //https://stackoverflow.com/questions/29180889/create-an-android-model-class-in-android-studio
+    //Raiyan Shahid
+    //https://stackoverflow.com/users/14424782/raiyan-shahid
+
 )

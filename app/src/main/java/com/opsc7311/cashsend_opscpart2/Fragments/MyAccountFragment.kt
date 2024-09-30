@@ -66,6 +66,10 @@ class MyAccountFragment : Fragment() {
         btnSave = view.findViewById(R.id.btn_save)
         ivBackArrow = view.findViewById(R.id.iv_back_arrow)
         btnEditPicture = view.findViewById(R.id.tv_edit_profile_picture)
+        //This code was adapted from Stack Overflow
+        //https://stackoverflow.com/questions/68339418/cannot-resolve-symbol-viewholder-java-android-studio
+        //Brett Hudson
+        //https://stackoverflow.com/users/14602853/brett-hudson
 
         // Fetch user details from Firebase and display them
         fetchUserProfileDetails()
@@ -84,6 +88,10 @@ class MyAccountFragment : Fragment() {
         btnSave.setOnClickListener {
             saveUserProfileDetails()
         }
+        //code was adapted from stack overflow
+        //https://stackoverflow.com/questions/52844923/button-click-listener-in-fragment-android-studio
+        //Ben Bloodworth
+        //https://stackoverflow.com/users/5152586/ben-bloodworth
 
         return view
     }
@@ -174,6 +182,10 @@ class MyAccountFragment : Fragment() {
                 "mobileNumber" to mobileNumber,
                 "email" to email
             )
+            //This code was adapted from Stack Overflow
+            //https://stackoverflow.com/questions/68339418/cannot-resolve-symbol-viewholder-java-android-studio
+            //Brett Hudson
+            //https://stackoverflow.com/users/14602853/brett-hudson
 
             database.child("users").child(userId).updateChildren(userUpdates)
                 .addOnSuccessListener {
@@ -206,6 +218,11 @@ class MyAccountFragment : Fragment() {
                     Toast.makeText(requireContext(), "Failed to update password", Toast.LENGTH_SHORT).show()
                 }
             }
+
+        //code was adapted from stack overflow
+        //https://stackoverflow.com/questions/71880384/updating-password-in-sharedpreferences-at-android-studio
+        //S.Iliev
+        //https://stackoverflow.com/users/10695224/s-iliev
     }
 }
 

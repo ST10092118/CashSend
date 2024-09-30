@@ -23,6 +23,10 @@ class HomeScreenActivity : AppCompatActivity() {
         val btnQRScanner: FloatingActionButton = findViewById(R.id.btn_qr_scanner)
         val btnProfile: Button = findViewById(R.id.btn_profile)
         val btnSettings: Button = findViewById(R.id.btn_settings)
+        //This code was adapted from Stack Overflow
+        //https://stackoverflow.com/questions/68339418/cannot-resolve-symbol-viewholder-java-android-studio
+        //Brett Hudson
+        //https://stackoverflow.com/users/14602853/brett-hudson
 
         // "More" button click listener
         btnMore.setOnClickListener {
@@ -33,18 +37,33 @@ class HomeScreenActivity : AppCompatActivity() {
         btnCards.setOnClickListener {
             val intent = Intent(this, CardSelectionActivity::class.java)
             startActivity(intent)
+
+            //code was adapted from stack overflow
+            //https://stackoverflow.com/questions/52844923/button-click-listener-in-fragment-android-studio
+            //Ben Bloodworth
+            //https://stackoverflow.com/users/5152586/ben-bloodworth
         }
 
         // Navigate to Notifications Block on Home Screen
         btnNotifications.setOnClickListener {
             val intent = Intent(this, NotificationsActivity::class.java)
             startActivity(intent)
+
+            //code was adapted from stack overflow
+            //https://stackoverflow.com/questions/52844923/button-click-listener-in-fragment-android-studio
+            //Ben Bloodworth
+            //https://stackoverflow.com/users/5152586/ben-bloodworth
         }
 
         // QR code scanner button click listener
         btnQRScanner.setOnClickListener {
             Toast.makeText(this, "QR Code scanner clicked", Toast.LENGTH_SHORT).show()
             // Open QR code scanner activity here
+
+            //code was adapted from stack overflow
+            //https://stackoverflow.com/questions/52844923/button-click-listener-in-fragment-android-studio
+            //Ben Bloodworth
+            //https://stackoverflow.com/users/5152586/ben-bloodworth
         }
 
         // User profile block click listener
@@ -53,14 +72,24 @@ class HomeScreenActivity : AppCompatActivity() {
             val myAccountFragment = MyAccountFragment()
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container_view, myAccountFragment) // Use the ID of your fragment container
-                .addToBackStack(null) // Optional: allows the user to navigate back
+                .addToBackStack(null) //  allows the user to navigate back
                 .commit()
+
+            //code was adapted from stack overflow
+            //https://stackoverflow.com/questions/52844923/button-click-listener-in-fragment-android-studio
+            //Ben Bloodworth
+            //https://stackoverflow.com/users/5152586/ben-bloodworth
         }
 
         // Settings block click listener - Navigate to SettingsActivity
         btnSettings.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
+
+            //code was adapted from stack overflow
+            //https://stackoverflow.com/questions/52844923/button-click-listener-in-fragment-android-studio
+            //Ben Bloodworth
+            //https://stackoverflow.com/users/5152586/ben-bloodworth
         }
     }
 }

@@ -32,6 +32,10 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.fragment_container_view, loginFragment)
             .commit()
     }
+    //code was adapted from stack overflow
+    //https://stackoverflow.com/questions/3724509/going-to-home-screen-programmatically
+    //jim
+    //https://stackoverflow.com/users/3222339/jim
 
 
     fun navigateToRegisterFragment() {
@@ -41,5 +45,9 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(null)  // Add to back stack so that the user can go back
             .commit()
     }
+    //code was adapted from stack overflow
+    //https://stackoverflow.com/questions/3724509/going-to-home-screen-programmatically
+    //jim
+    //https://stackoverflow.com/users/3222339/jim
 
 }

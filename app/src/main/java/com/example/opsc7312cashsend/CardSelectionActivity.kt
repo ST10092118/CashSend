@@ -31,6 +31,10 @@ class CardSelectionActivity : AppCompatActivity() {
 
         btnBack.setOnClickListener {
             finish()
+            //This code was adapted from Stack Overflow
+            //https://stackoverflow.com/questions/68339418/cannot-resolve-symbol-viewholder-java-android-studio
+            //Brett Hudson
+            //https://stackoverflow.com/users/14602853/brett-hudson
         }
 
         btnAddCard.setOnClickListener {
@@ -51,6 +55,10 @@ class CardSelectionActivity : AppCompatActivity() {
             Toast.makeText(this, "Selected: ${selectedCard.cardName}", Toast.LENGTH_SHORT).show()
         }
     }
+    //code was adapted from stack overflow
+    //https://stackoverflow.com/questions/67449808/android-load-data-from-database-once
+    //Jonathan
+    //https://stackoverflow.com/users/8875056/jonathan
 }
 
 

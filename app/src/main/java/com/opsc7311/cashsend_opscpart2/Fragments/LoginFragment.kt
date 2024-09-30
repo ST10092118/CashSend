@@ -49,7 +49,7 @@ class LoginFragment : Fragment() {
         val emailInput: EditText = view.findViewById(R.id.eMailuSername)
         val passwordInput: EditText = view.findViewById(R.id.pAssword)
         val loginButton: Button = view.findViewById(R.id.LoginBtnBtn)
-        val googleSignInButton: ImageView = view.findViewById(R.id.google_btn) // Assuming there's an ImageView for Google Sign-In
+        val googleSignInButton: ImageView = view.findViewById(R.id.google_btn)
 
         // Email/Password login button click listener
         loginButton.setOnClickListener {
@@ -88,12 +88,17 @@ class LoginFragment : Fragment() {
                     Toast.makeText(requireContext(), "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
+
+        //code was adapted from geeksforgeeks
+        //https://www.geeksforgeeks.org/user-login-in-android-using-back4app/
     }
 
     // Google Sign-In function
     private fun signInWithGoogle() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
+        //code was adapted from geeksforgeeks
+        //https://www.geeksforgeeks.org/user-login-in-android-using-back4app/
     }
 
     // Handle the result from Google Sign-In
@@ -124,6 +129,10 @@ class LoginFragment : Fragment() {
     private fun navigateToHomeScreen() {
         val intent = Intent(requireActivity(), HomeScreenActivity::class.java)
         startActivity(intent)
-        requireActivity().finish() // Optional: Call this to close the LoginActivity
+        requireActivity().finish() // Call this to close the LoginActivity
+        //code was adapted from stack overflow
+        //https://stackoverflow.com/questions/3724509/going-to-home-screen-programmatically
+        //jim
+        //https://stackoverflow.com/users/3222339/jim
     }
 }
