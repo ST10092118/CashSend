@@ -12,7 +12,6 @@ android {
     defaultConfig {
         applicationId = "com.opsc7311.OPSC7321CashSend"
 
-
     }
 
     android {
@@ -60,7 +59,6 @@ android {
         implementation(libs.androidx.core.ktx)
         implementation(libs.androidx.appcompat)
         implementation(libs.material)
-
         implementation(libs.androidx.activity)
         implementation(libs.androidx.constraintlayout)
         implementation(libs.firebase.auth)
@@ -72,13 +70,20 @@ android {
         androidTestImplementation(libs.androidx.junit)
         androidTestImplementation(libs.androidx.espresso.core)
         implementation(libs.androidx.constraintlayout)
-
         implementation(libs.androidx.navigation.fragment.ktx)
         implementation(libs.androidx.navigation.ui.ktx)
         implementation ("com.google.android.gms:play-services-auth:21.2.0")
+        implementation ("androidx.camera:camera-core:1.0.2")
+        implementation ("androidx.camera:camera-camera2:1.0.2")
+        implementation ("androidx.camera:camera-lifecycle:1.0.2")
+        implementation ("androidx.camera:camera-view:1.0.0-alpha31")
+        implementation ("com.google.mlkit:barcode-scanning:17.0.3")
+
     }
 }
 dependencies {
     implementation(libs.firebase.auth)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.view)
 }
 

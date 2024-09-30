@@ -1,4 +1,4 @@
-package com.example.opsc7312cashsend.SignIn
+package com.opsc7311.cashsend_opscpart2.SignIn
 
 
 data class SignInResult(

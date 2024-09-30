@@ -1,4 +1,4 @@
-package com.example.opsc7312cashsend.SignIn
+package com.opsc7311.cashsend_opscpart2.SignIn
 
 import android.content.Context
 import android.content.Intent
@@ -33,7 +33,7 @@ e.printStackTrace()
         return result?.pendingIntent?.intentSender
     }
 
-    suspend fun signInWithIntent(intent: Intent) : SignInResult{
+    suspend fun signInWithIntent(intent: Intent) : SignInResult {
         val credential = oneTapClient.getSignInCredentialFromIntent(intent)
         val googleIdToken = credential.googleIdToken
         val googleCredentials = GoogleAuthProvider.getCredential(googleIdToken, null)
