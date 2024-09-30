@@ -1,5 +1,6 @@
 package com.example.opsc7312cashsend
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -9,12 +10,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
-import com.opsc7311.cashsend_opscpart2.Fragments.LoginFragment
-
+import com.opsc7311.cashsend_opscpart2.MainActivity
 
 class SettingsActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
@@ -24,14 +25,13 @@ class SettingsActivity : AppCompatActivity() {
         // Initialize Google Sign-In Client
         googleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN)
 
-
         // Toolbar back button
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Settings" // Set title to "Settings" only once
+        supportActionBar?.title = "Settings" // Set title to "Settings"
         supportActionBar?.setDisplayHomeAsUpEnabled(true) // Enable back button
         toolbar.setNavigationOnClickListener {
-            finish() // Navigate back to the home screen
+            finish() // Navigate back to the previous screen
         }
 
         // Theme Button
@@ -60,11 +60,11 @@ class SettingsActivity : AppCompatActivity() {
                     auth.signOut()
                     Toast.makeText(this@SettingsActivity, "Signed out successfully", Toast.LENGTH_SHORT).show()
 
-                    // Replace the current fragment with LoginFragment
-                    val loginFragment = LoginFragment()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container_view, loginFragment)
-                        .commit()
+                    // Start MainActivity and navigate to LoginFragment
+                    val intent = Intent(this@SettingsActivity, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Clear the back stack
+                    intent.putExtra("showLoginFragment", true) // Pass flag to show LoginFragment
+                    startActivity(intent) // Navigate to MainActivity
 
                 } else {
                     Toast.makeText(this@SettingsActivity, "Sign out failed", Toast.LENGTH_SHORT).show()
