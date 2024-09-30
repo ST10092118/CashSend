@@ -33,6 +33,11 @@ class CardAdapter(private val cardList: List<Card>, private val onCardSelected: 
             notifyItemChanged(previousPosition) // Remove the indicator from the previously selected card
             notifyItemChanged(selectedPosition) // Show the indicator for the newly selected card
             onCardSelected(card) // Trigger the selection callback
+
+            //This code was adapted from Stack Overflow
+            //https://stackoverflow.com/questions/32929795/inserting-nodes-of-html-elements
+            //Barmar
+            //https://stackoverflow.com/users/1491895/barmar
         }
     }
 
@@ -45,5 +50,10 @@ class CardAdapter(private val cardList: List<Card>, private val onCardSelected: 
         val tvCardNumber: TextView = itemView.findViewById(R.id.tv_card_number)
         val ivSelectedIndicator: ImageView = itemView.findViewById(R.id.iv_selected_indicator)
     }
+
+    //This code was adapted from Stack Overflow
+    //https://stackoverflow.com/questions/68339418/cannot-resolve-symbol-viewholder-java-android-studio
+    //Brett Hudson
+    //https://stackoverflow.com/users/14602853/brett-hudson
 }
 

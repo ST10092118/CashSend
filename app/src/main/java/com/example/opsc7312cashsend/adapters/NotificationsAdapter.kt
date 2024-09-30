@@ -17,6 +17,11 @@ class NotificationsAdapter(private var notificationList: List<Notification>) :
         val timeText: TextView = itemView.findViewById(R.id.tv_time)
         val detailsText: TextView = itemView.findViewById(R.id.tv_details)
         val detailsButton: ImageButton = itemView.findViewById(R.id.btn_details)
+
+        //This code was adapted from Stack Overflow
+        //https://stackoverflow.com/questions/68339418/cannot-resolve-symbol-viewholder-java-android-studio
+        //Brett Hudson
+        //https://stackoverflow.com/users/14602853/brett-hudson
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -45,6 +50,10 @@ class NotificationsAdapter(private var notificationList: List<Notification>) :
             notification.isExpanded = !notification.isExpanded
             notifyItemChanged(position) // Refresh this item to show/hide details
         }
+        //This code was adapted from Stack Overflow
+        //https://stackoverflow.com/questions/70012481/android-studio-kotlin-notifyitemchanged-not-calling-onbindviewholder
+        //Meggrain
+        //https://stackoverflow.com/users/17286933/meggrain
     }
 
     override fun getItemCount() = notificationList.size
