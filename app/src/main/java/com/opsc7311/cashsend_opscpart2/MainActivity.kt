@@ -7,7 +7,7 @@ import com.example.OPSC7312CashSend.databinding.ActivityMainBinding
 import com.opsc7311.cashsend_opscpart2.Fragments.LoginFragment
 import com.opsc7311.cashsend_opscpart2.Fragmentss.RegisterFragment
 
-
+//Code Updated
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
