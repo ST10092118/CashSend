@@ -66,6 +66,7 @@ android {
         implementation("com.github.bumptech.glide:glide:4.11.0")
         implementation(libs.firebase.storage.ktx)
         annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
+        implementation("com.google.guava:guava:31.1-android")
         testImplementation(libs.junit)
         androidTestImplementation(libs.androidx.junit)
         androidTestImplementation(libs.androidx.espresso.core)
@@ -78,6 +79,9 @@ android {
         implementation ("androidx.camera:camera-lifecycle:1.0.2")
         implementation ("androidx.camera:camera-view:1.0.0-alpha31")
         implementation ("com.google.mlkit:barcode-scanning:17.0.3")
+        implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+        implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
 
     }
 }
@@ -85,5 +89,6 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.androidx.camera.lifecycle)
     implementation(libs.androidx.camera.view)
+    implementation(libs.firebase.firestore.ktx)
 }
 

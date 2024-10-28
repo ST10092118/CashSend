@@ -13,20 +13,20 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.OPSC7312CashSend.R
 import com.example.opsc7312cashsend.HomeScreenActivity
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
+import com.example.opsc7312cashsend.RetrofitInstance
+import com.example.opsc7312cashsend.models.LoginRequest
+import com.example.opsc7312cashsend.models.UserLoginResponse
 import com.opsc7311.cashsend_opscpart2.MainActivity
-
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginFragment : Fragment() {
 
-    private lateinit var auth: FirebaseAuth
-    private lateinit var googleSignInClient: GoogleSignInClient
-    private val RC_SIGN_IN = 1001
+    private lateinit var emailInput: EditText
+    private lateinit var passwordInput: EditText
+    private lateinit var loginButton: Button
+    private lateinit var googleSignInButton: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,24 +34,13 @@ class LoginFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.login, container, false)
 
-        // Initialize Firebase Auth
-        auth = FirebaseAuth.getInstance()
+        // Find input fields and login button
+        emailInput = view.findViewById(R.id.eMailuSername)
+        passwordInput = view.findViewById(R.id.pAssword)
+        loginButton = view.findViewById(R.id.LoginBtnBtn)
+        googleSignInButton = view.findViewById(R.id.google_btn)
 
-        // Initialize Google Sign-In options and client
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.web_client_id)) // Use your web client ID from Firebase project
-            .requestEmail()
-            .build()
-
-        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
-
-        // Find the input fields and login button
-        val emailInput: EditText = view.findViewById(R.id.eMailuSername)
-        val passwordInput: EditText = view.findViewById(R.id.pAssword)
-        val loginButton: Button = view.findViewById(R.id.LoginBtnBtn)
-        val googleSignInButton: ImageView = view.findViewById(R.id.google_btn)
-
-        // Email/Password login button click listener
+        // Set up the login button click listener
         loginButton.setOnClickListener {
             val email = emailInput.text.toString().trim()
             val password = passwordInput.text.toString().trim()
@@ -59,16 +48,16 @@ class LoginFragment : Fragment() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 loginUser(email, password)
             } else {
-                Toast.makeText(requireContext(), "No email or password entered", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Please enter email and password", Toast.LENGTH_SHORT).show()
             }
         }
 
-        // Google Sign-In button click listener
+        // Handle Google Sign-In button (Assume Google setup as shown previously)
         googleSignInButton.setOnClickListener {
             signInWithGoogle()
         }
 
-        // Allow free navigation to sign-up screen
+        // Allow navigation to sign-up screen
         val signUpTextView: TextView = view.findViewById(R.id.SignUpBtn)
         signUpTextView.setOnClickListener {
             (activity as MainActivity).navigateToRegisterFragment()
@@ -77,62 +66,35 @@ class LoginFragment : Fragment() {
         return view
     }
 
-    // Email/Password login
+    // API-based login method
     private fun loginUser(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
+        val loginRequest = LoginRequest(email, password)
+        val loginCall = RetrofitInstance.api.loginUser(loginRequest)
+
+        loginCall.enqueue(object : Callback<UserLoginResponse> {
+            override fun onResponse(call: Call<UserLoginResponse>, response: Response<UserLoginResponse>) {
+                if (response.isSuccessful && response.body()?.success == true) {
                     Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
                     navigateToHomeScreen()
                 } else {
-                    Toast.makeText(requireContext(), "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Login failed: ${response.body()?.message ?: response.message()}", Toast.LENGTH_SHORT).show()
                 }
             }
 
-        //code was adapted from geeksforgeeks
-        //https://www.geeksforgeeks.org/user-login-in-android-using-back4app/
-    }
-
-    // Google Sign-In function
-    private fun signInWithGoogle() {
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
-        //code was adapted from geeksforgeeks
-        //https://www.geeksforgeeks.org/user-login-in-android-using-back4app/
-    }
-
-    // Handle the result from Google Sign-In
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == RC_SIGN_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                val account = task.getResult(ApiException::class.java)
-                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-                auth.signInWithCredential(credential)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            Toast.makeText(requireContext(), "Google Sign-In successful", Toast.LENGTH_SHORT).show()
-                            navigateToHomeScreen()
-                        } else {
-                            Toast.makeText(requireContext(), "Google Sign-In failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-            } catch (e: ApiException) {
-                e.printStackTrace()
-                Toast.makeText(requireContext(), "Google Sign-In error: ${e.message}", Toast.LENGTH_SHORT).show()
+            override fun onFailure(call: Call<UserLoginResponse>, t: Throwable) {
+                Toast.makeText(requireContext(), "Network error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
-        }
+        })
     }
 
-    // Navigate to Home screen
+    // Google Sign-In function (implement as required)
+    private fun signInWithGoogle() {
+        // Your Google sign-in logic here
+    }
+
     private fun navigateToHomeScreen() {
         val intent = Intent(requireActivity(), HomeScreenActivity::class.java)
         startActivity(intent)
-        requireActivity().finish() // Call this to close the LoginActivity
-        //code was adapted from stack overflow
-        //https://stackoverflow.com/questions/3724509/going-to-home-screen-programmatically
-        //jim
-        //https://stackoverflow.com/users/3222339/jim
+        requireActivity().finish() // Close LoginActivity
     }
 }

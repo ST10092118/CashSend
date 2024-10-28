@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.OPSC7312CashSend.R
 import com.example.OPSC7312CashSend.databinding.ActivityMainBinding
 import com.opsc7311.cashsend_opscpart2.Fragments.LoginFragment
-import com.opsc7311.cashsend_opscpart2.Fragmentss.RegisterFragment
+import com.opsc7311.cashsend_opscpart2.Fragments.RegisterFragment
 
 
 class MainActivity : AppCompatActivity() {
