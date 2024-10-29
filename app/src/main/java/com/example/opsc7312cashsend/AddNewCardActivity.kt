@@ -4,11 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.OPSC7312CashSend.R
 import com.example.opsc7312cashsend.models.Card
+import com.google.firebase.auth.FirebaseAuth
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class AddNewCardActivity : AppCompatActivity() {
 
@@ -17,7 +20,6 @@ class AddNewCardActivity : AppCompatActivity() {
     private lateinit var etExpirationDate: EditText
     private lateinit var etCVV: EditText
     private lateinit var btnAddCard: Button
-    private lateinit var btnBack: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,20 +31,10 @@ class AddNewCardActivity : AppCompatActivity() {
         etExpirationDate = findViewById(R.id.et_expiration_date)
         etCVV = findViewById(R.id.et_cvv)
         btnAddCard = findViewById(R.id.btn_add_card)
-        btnBack = findViewById(R.id.btn_back) // Initialize the back button
-        //This code was adapted from Stack Overflow
-        //https://stackoverflow.com/questions/68339418/cannot-resolve-symbol-viewholder-java-android-studio
-        //Brett Hudson
-        //https://stackoverflow.com/users/14602853/brett-hudson
 
         // Add button click listener
         btnAddCard.setOnClickListener {
             addCard()
-        }
-
-        // Back button click listener
-        btnBack.setOnClickListener {
-            navigateToHomeScreen()
         }
     }
 
@@ -51,20 +43,35 @@ class AddNewCardActivity : AppCompatActivity() {
         val cardName = etCardName.text.toString()
         val expirationDate = etExpirationDate.text.toString()
         val cvv = etCVV.text.toString()
-        //This code was adapted from Stack Overflow
-        //https://stackoverflow.com/questions/68339418/cannot-resolve-symbol-viewholder-java-android-studio
-        //Brett Hudson
-        //https://stackoverflow.com/users/14602853/brett-hudson
 
         // Validate card details
         if (validateCardDetails(cardNumber, cardName, expirationDate, cvv)) {
-            // Add the new card to the repository
-            val newCard = Card(cardName, cardNumber, expirationDate)
-            CardRepository.addCard(newCard)
+            val userId = FirebaseAuth.getInstance().currentUser?.uid
 
-            // Show confirmation and close activity
-            Toast.makeText(this, "Card added successfully", Toast.LENGTH_SHORT).show()
-            finish() // Return to the previous screen (e.g., CardSelectionActivity)
+            if (userId != null) {
+                val newCard = Card(userId, cardNumber, expirationDate, cardName)
+
+                // Call the Retrofit API to add the card to the server
+                RetrofitInstance.api.addCard(newCard).enqueue(object : Callback<Void> {
+                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                        if (response.isSuccessful) {
+                            Toast.makeText(this@AddNewCardActivity, "Card added successfully", Toast.LENGTH_SHORT).show()
+                            // Navigate back to CardSelectionActivity
+                            val intent = Intent(this@AddNewCardActivity, CardSelectionActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
+                        } else {
+                            Toast.makeText(this@AddNewCardActivity, "Failed to add card: ${response.message()}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<Void>, t: Throwable) {
+                        Toast.makeText(this@AddNewCardActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                    }
+                })
+            } else {
+                Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -86,14 +93,5 @@ class AddNewCardActivity : AppCompatActivity() {
             return false
         }
         return true
-        //This code was adapted from Stack Overflow
-        //https://medium.com/@boyrazgiray/how-to-catch-handle-exceptions-globally-in-android-d3447064df14
-    }
-
-    private fun navigateToHomeScreen() {
-        val intent = Intent(this, HomeScreenActivity::class.java)
-        startActivity(intent)
-        finish() // Close the current activity to prevent going back to it
     }
 }
-

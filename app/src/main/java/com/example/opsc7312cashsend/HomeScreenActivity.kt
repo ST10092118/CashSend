@@ -24,7 +24,7 @@ class HomeScreenActivity : AppCompatActivity() {
         val btnProfile: Button = findViewById(R.id.btn_profile)
         val btnSettings: Button = findViewById(R.id.btn_settings)
 
-        // "More" button click listener
+         //"More" button click listener
         btnMore.setOnClickListener {
             Toast.makeText(this, "More features coming soon!", Toast.LENGTH_SHORT).show()
         }

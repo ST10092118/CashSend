@@ -12,17 +12,23 @@ import androidx.fragment.app.Fragment
 import com.example.OPSC7312CashSend.R
 import com.example.opsc7312cashsend.RetrofitInstance
 import com.example.opsc7312cashsend.User
+import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class RegisterFragment : Fragment() {
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.register, container, false)
+
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance()
 
         // Find the input fields
         val emailUsernameInput: EditText = view.findViewById(R.id.eMailuSername)
@@ -69,30 +75,48 @@ class RegisterFragment : Fragment() {
     }
 
     private fun registerUser(email: String, password: String, firstName: String, lastName: String, dateOfBirth: String, mobileNumber: String) {
-        // Construct user object to be sent via Retrofit
-        val user = User(
-            userId = "uniqueUserId", // Use Firebase Auth UID if you want
-            dateOfBirth = dateOfBirth,
-            email = email,
-            firstName = firstName,
-            lastName = lastName,
-            mobileNumber = mobileNumber
-        )
+        // Sign up the user with Firebase Auth first
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    // Successfully created Firebase user, now get the UID
+                    val firebaseUser = auth.currentUser
+                    val userId = firebaseUser?.uid
 
-        // Make the API call using Retrofit
-        RetrofitInstance.api.addUser(user).enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if (response.isSuccessful) {
-                    Toast.makeText(requireContext(), "User registered successfully", Toast.LENGTH_SHORT).show()
-                    navigateToLoginFragment()
+                    // Proceed with user registration in your database
+                    if (userId != null) {
+                        val user = User(
+                            userId = userId,
+                            dateOfBirth = dateOfBirth,
+                            email = email,
+                            firstName = firstName,
+                            lastName = lastName,
+                            mobileNumber = mobileNumber,
+                            password = password
+                        )
+
+                        // Now call the API to add the user
+                        RetrofitInstance.api.addUser(user).enqueue(object : Callback<Void> {
+                            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                                if (response.isSuccessful) {
+                                    Toast.makeText(requireContext(), "User registered successfully", Toast.LENGTH_SHORT).show()
+                                    navigateToLoginFragment()
+                                } else {
+                                    Toast.makeText(requireContext(), "Registration failed: ${response.message()}", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+
+                            override fun onFailure(call: Call<Void>, t: Throwable) {
+                                Toast.makeText(requireContext(), "Registration failed: ${t.message}", Toast.LENGTH_SHORT).show()
+                            }
+                        })
+                    } else {
+                        Toast.makeText(requireContext(), "Failed to get Firebase UID", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
-                    Toast.makeText(requireContext(), "Registration failed: ${response.message()}", Toast.LENGTH_SHORT).show()
+                    // Handle errors during Firebase Authentication
+                    Toast.makeText(requireContext(), "Firebase Auth failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
-
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-                Toast.makeText(requireContext(), "Registration failed: ${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
     }
 }

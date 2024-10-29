@@ -2,7 +2,7 @@ package com.example.opsc7312cashsend
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,11 +10,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.OPSC7312CashSend.R
 import com.example.opsc7312cashsend.adapters.CardAdapter
+import com.example.opsc7312cashsend.models.Card
+import com.google.firebase.auth.FirebaseAuth
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class CardSelectionActivity : AppCompatActivity() {
 
     private lateinit var recyclerViewCards: RecyclerView
-    private lateinit var btnAddCard: Button
+    private lateinit var btnAddCard: ImageButton
     private lateinit var btnBack: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,18 +28,16 @@ class CardSelectionActivity : AppCompatActivity() {
 
         // Initialize views
         btnBack = findViewById(R.id.btn_back)
-        btnAddCard = findViewById(R.id.btn_add_card)
+        btnAddCard = findViewById(R.id.addCardImage)
         recyclerViewCards = findViewById(R.id.recycler_view_cards)
 
         recyclerViewCards.layoutManager = LinearLayoutManager(this)
+
+        // Load cards when activity is created
         loadCards()
 
         btnBack.setOnClickListener {
             finish()
-            //This code was adapted from Stack Overflow
-            //https://stackoverflow.com/questions/68339418/cannot-resolve-symbol-viewholder-java-android-studio
-            //Brett Hudson
-            //https://stackoverflow.com/users/14602853/brett-hudson
         }
 
         btnAddCard.setOnClickListener {
@@ -49,17 +52,37 @@ class CardSelectionActivity : AppCompatActivity() {
     }
 
     private fun loadCards() {
-        val cardList = CardRepository.getCardList()
-        recyclerViewCards.adapter = CardAdapter(cardList) { selectedCard ->
-            // Handle card selection logic here (e.g., store or display the selected card)
-            Toast.makeText(this, "Selected: ${selectedCard.cardName}", Toast.LENGTH_SHORT).show()
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+        if (userId != null) {
+            RetrofitInstance.api.getCards(userId).enqueue(object : Callback<Map<String, Card>> {
+                override fun onResponse(call: Call<Map<String, Card>>, response: Response<Map<String, Card>>) {
+                    if (response.isSuccessful) {
+                        val cardMap = response.body() ?: emptyMap()
+                        val cardList = cardMap.values.toList()
+
+                        Log.d("CardSelectionActivity", "Loaded cards: $cardList")
+
+                        if (cardList.isNotEmpty()) {
+                            recyclerViewCards.adapter = CardAdapter(cardList) { selectedCard ->
+                                Toast.makeText(this@CardSelectionActivity, "Selected: ${selectedCard.cardHolderName}", Toast.LENGTH_SHORT).show()
+                            }
+                        } else {
+                            Toast.makeText(this@CardSelectionActivity, "No cards found.", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Log.e("CardSelectionActivity", "Failed to load cards: ${response.message()}, Code: ${response.code()}")
+                        Toast.makeText(this@CardSelectionActivity, "Failed to load cards: ${response.message()}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Map<String, Card>>, t: Throwable) {
+                    Log.e("CardSelectionActivity", "Error: ${t.message}", t)
+                    Toast.makeText(this@CardSelectionActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
+        } else {
+            Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
         }
     }
-    //code was adapted from stack overflow
-    //https://stackoverflow.com/questions/67449808/android-load-data-from-database-once
-    //Jonathan
-    //https://stackoverflow.com/users/8875056/jonathan
+
 }
-
-
-
