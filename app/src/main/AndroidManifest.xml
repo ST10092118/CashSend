@@ -45,6 +45,10 @@
             android:exported="false" />
 
         <activity
+            android:name="com.example.opsc7312cashsend.MyAccountActivity"
+            android:exported="true" />
+
+        <activity
             android:name="com.example.opsc7312cashsend.AddNewCardActivity"
             android:exported="true" />
 

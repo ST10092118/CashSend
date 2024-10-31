@@ -50,12 +50,8 @@ class HomeScreenActivity : AppCompatActivity() {
 
         // User profile block click listener
         btnProfile.setOnClickListener {
-
-            val myAccountFragment = MyAccountFragment()
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container_view, myAccountFragment) // Use the ID of your fragment container
-                .addToBackStack(null) // Optional: allows the user to navigate back
-                .commit()
+            val intent = Intent(this, MyAccountActivity::class.java)
+            startActivity(intent)
         }
 
         // Settings block click listener - Navigate to SettingsActivity
