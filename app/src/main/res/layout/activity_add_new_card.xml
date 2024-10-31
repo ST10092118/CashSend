@@ -6,6 +6,7 @@
     android:padding="16dp"
     android:background="#FFFFFF">
 
+
     <!-- Header Section -->
     <TextView
         android:id="@+id/addNewCardTitle"

@@ -31,7 +31,7 @@ class HomeScreenActivity : AppCompatActivity() {
 
         // Cards block click listener - Navigate to CardSelectionActivity
         btnCards.setOnClickListener {
-            val intent = Intent(this, CardSelectionActivity::class.java)
+            val intent = Intent(this, AddingCardActivity::class.java)
             startActivity(intent)
         }
 

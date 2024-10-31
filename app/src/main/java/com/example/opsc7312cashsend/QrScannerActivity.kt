@@ -24,13 +24,13 @@ import java.util.concurrent.Executors
 class QrScannerActivity : AppCompatActivity() {
 
     private lateinit var cameraExecutor: ExecutorService
-    private var isProcessing = false // Flag to prevent multiple scans
+    private var isProcessing = false
+    private var isIntentLaunched = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qr_scanner)
 
-        // Request camera permissions
         if (allPermissionsGranted()) {
             startCamera()
         } else {
@@ -48,36 +48,31 @@ class QrScannerActivity : AppCompatActivity() {
         cameraProviderFuture.addListener({
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
 
-            // Preview use case
+            // Configure Preview
             val preview = Preview.Builder()
                 .build()
                 .also {
                     it.setSurfaceProvider(findViewById<PreviewView>(R.id.viewFinder).surfaceProvider)
                 }
 
-            // Image Analysis use case
+            // Configure ImageAnalysis
             val imageAnalysis = ImageAnalysis.Builder()
                 .setTargetResolution(Size(1280, 720))
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                 .build()
 
-            imageAnalysis.setAnalyzer(cameraExecutor, { imageProxy ->
+            imageAnalysis.setAnalyzer(cameraExecutor) { imageProxy ->
                 processImageProxy(imageProxy)
-            })
+            }
 
-            // Camera selector - use the back camera
+            // Select back camera
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
             try {
-                // Unbind use cases before rebinding
-                cameraProvider.unbindAll()
-
-                // Bind camera to lifecycle
-                cameraProvider.bindToLifecycle(
-                    this, cameraSelector, preview, imageAnalysis
-                )
+                cameraProvider.unbindAll() // Unbind all use cases before rebinding
+                cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalysis)
             } catch (exc: Exception) {
-                Toast.makeText(this, "Failed to start camera", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Failed to start camera: ${exc.message}", Toast.LENGTH_SHORT).show()
             }
 
         }, ContextCompat.getMainExecutor(this))
@@ -85,8 +80,8 @@ class QrScannerActivity : AppCompatActivity() {
 
     @OptIn(ExperimentalGetImage::class)
     private fun processImageProxy(imageProxy: ImageProxy) {
-        if (isProcessing) { // If already processing, return
-            imageProxy.close()
+        if (isProcessing) {
+            imageProxy.close() // Close the imageProxy if processing is ongoing
             return
         }
 
@@ -95,22 +90,22 @@ class QrScannerActivity : AppCompatActivity() {
             val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
             val scanner = BarcodeScanning.getClient()
 
-            isProcessing = true // Set the flag to indicate processing
+            isProcessing = true // Set flag to true when processing starts
 
             scanner.process(image)
                 .addOnSuccessListener { barcodes ->
                     if (barcodes.isNotEmpty()) {
                         for (barcode in barcodes) {
                             if (barcode.valueType == Barcode.TYPE_URL || barcode.valueType == Barcode.TYPE_TEXT) {
-                                // Show QR Code result to the user
-                                Toast.makeText(this, "QR Code: ${barcode.displayValue}", Toast.LENGTH_SHORT).show()
-
-                                // Start NotificationsActivity after scanning
-                                val intent = Intent(this, NotificationsActivity::class.java)
-                                intent.putExtra("QR_CODE_DATA", barcode.displayValue) // Optional: pass the QR code data
-                                startActivity(intent)
-                                finish() // Finish the current activity to prevent going back to it
-                                break
+                                // Check if the intent has already been launched
+                                if (!isIntentLaunched) {
+                                    isIntentLaunched = true // Set the flag to prevent further launches
+                                    val intent = Intent(this, QrResultActivity::class.java)
+                                    intent.putExtra("QR_CODE_DATA", barcode.displayValue)
+                                    startActivity(intent)
+                                    finish()
+                                    break
+                                }
                             }
                         }
                     } else {
@@ -118,25 +113,26 @@ class QrScannerActivity : AppCompatActivity() {
                     }
                 }
                 .addOnFailureListener { e ->
-                    Log.e("QrScannerActivity", "Scanning failed: ${e.message}")
+                    Log.e("QrScannerActivity", "Barcode scanning failed", e)
                 }
                 .addOnCompleteListener {
-                    imageProxy.close()
-                    isProcessing = false // Reset the flag after processing is complete
+                    isProcessing = false // Reset the flag after processing
+                    imageProxy.close() // Close the imageProxy once done
                 }
         } else {
             imageProxy.close()
         }
     }
 
-    // Check if all required permissions are granted
-    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
-        ContextCompat.checkSelfPermission(
-            this, it
-        ) == PackageManager.PERMISSION_GRANTED
+    override fun onResume() {
+        super.onResume()
+        isIntentLaunched = false // Reset the flag when returning to the scanner activity
     }
 
-    // Handle the result of the permission request.
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
+        ContextCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED
+    }
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
@@ -144,14 +140,14 @@ class QrScannerActivity : AppCompatActivity() {
                 startCamera()
             } else {
                 Toast.makeText(this, "Permissions not granted", Toast.LENGTH_SHORT).show()
-                finish()
+                finish() // Finish activity if permissions are not granted
             }
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        cameraExecutor.shutdown()
+        cameraExecutor.shutdown() // Shutdown executor service
     }
 
     companion object {
@@ -159,4 +155,3 @@ class QrScannerActivity : AppCompatActivity() {
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
     }
 }
-

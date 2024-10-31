@@ -56,6 +56,14 @@
             android:name="com.example.opsc7312cashsend.SettingsActivity"
             android:exported="true" />
 
+        <activity
+            android:name="com.example.opsc7312cashsend.QrResultActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.example.opsc7312cashsend.AddingCardActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>
