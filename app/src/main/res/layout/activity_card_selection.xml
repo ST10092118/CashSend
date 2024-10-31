@@ -26,7 +26,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/backbutton"
-            android:contentDescription="Back"
+            android:contentDescription="@string/add_card_description"
             android:background="?attr/selectableItemBackgroundBorderless" />
 
         <!-- Title TextView -->
@@ -35,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="CARDS"
+            android:text="@string/cards_title"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
@@ -70,7 +70,7 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:src="@drawable/addnew"
-            android:contentDescription="Add Card"
+            android:contentDescription="@string/add_card_description"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_marginEnd="16dp" />
 
@@ -79,7 +79,7 @@
             android:id="@+id/addNewCardText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add a new card"
+            android:text="@string/add_new_card_text"
             android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>

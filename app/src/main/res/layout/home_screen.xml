@@ -1,11 +1,10 @@
-<!-- res/layout/activity_main.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_container_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <!-- "More" Button for future features -->
     <ImageButton
@@ -14,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/menu"
-        android:contentDescription="More options"
+        android:contentDescription="@string/more_options_description"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="16dp"
@@ -25,7 +24,7 @@
         android:id="@+id/btn_cards"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="CARDS"
+        android:text="@string/cards_text"
         android:drawableTop="@drawable/cards"
         android:backgroundTint="@color/blue"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,8 +36,6 @@
         android:layout_margin="8dp" />
 
     <!-- Notifications Block -->
-
-    <!-- QR Code Scanner in the center -->
     <Button
         android:id="@+id/btn_notifications"
         android:layout_width="0dp"
@@ -47,7 +44,7 @@
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/red"
         android:drawableTop="@drawable/notifications"
-        android:text="NOTIFICATIONS"
+        android:text="@string/notifications_text"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.4"
@@ -55,12 +52,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.5" />
 
-    <!-- User Profile Block -->
+    <!-- QR Code Scanner in the center -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_qr_scanner"
         android:layout_width="160dp"
         android:layout_height="101dp"
-        android:contentDescription="QR code scanner"
+        android:contentDescription="@string/qr_code_scanner_description"
         android:elevation="4dp"
         android:src="@drawable/qrcode"
         android:tint="@android:color/black"
@@ -71,11 +68,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- User Profile Block -->
     <Button
         android:id="@+id/btn_profile"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="ME"
+        android:text="@string/me_text"
         android:drawableTop="@drawable/person"
         android:backgroundTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -94,7 +92,7 @@
         android:layout_margin="8dp"
         android:backgroundTint="@color/blue"
         android:drawableTop="@drawable/settings"
-        android:text="SETTINGS"
+        android:text="@string/settings_text"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,6 +101,3 @@
         app:layout_constraintWidth_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-

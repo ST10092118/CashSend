@@ -45,7 +45,7 @@
                     android:paddingLeft="15dp"
                     android:paddingTop="10dp"
                     android:paddingRight="15dp"
-                    android:text="LOGIN"
+                    android:text="@string/login_button_text"
                     android:textAlignment="center"
                     android:textColor="@color/redColor"
                     android:textSize="20sp"
@@ -63,7 +63,7 @@
                     android:paddingTop="10dp"
                     android:paddingRight="15dp"
                     android:paddingBottom="10dp"
-                    android:text="SIGN UP"
+                    android:text="@string/signup_button_text"
                     android:textAlignment="center"
                     android:textColor="@color/textColor"
                     android:textSize="20sp"
@@ -87,7 +87,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:hint="Enter your username / email"
+                    android:hint="@string/username_hint"
                     app:boxStrokeColor="#4E4A4A"
                     app:boxStrokeWidth="1dp"
                     app:shapeAppearanceOverlay="@style/Button4">
@@ -110,7 +110,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:hint="Enter your password"
+                    android:hint="@string/password_hint"
                     app:boxStrokeColor="#4E4A4A"
                     app:boxStrokeWidth="1dp"
                     app:endIconMode="password_toggle"
@@ -135,7 +135,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:hint="First Name"
+                    android:hint="@string/first_name_hint"
                     app:boxStrokeColor="#4E4A4A"
                     app:boxStrokeWidth="1dp"
                     app:shapeAppearanceOverlay="@style/Button4">
@@ -159,7 +159,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:hint="Last Name"
+                    android:hint="@string/last_name_hint"
                     app:boxStrokeColor="#4E4A4A"
                     app:boxStrokeWidth="1dp"
                     app:shapeAppearanceOverlay="@style/Button4">
@@ -175,7 +175,7 @@
                         android:textStyle="normal" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Address -->
+                <!-- Date of Birth -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
@@ -183,7 +183,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:hint="Date of Birth"
+                    android:hint="@string/dob_hint"
                     app:boxStrokeColor="#4E4A4A"
                     app:boxStrokeWidth="1dp"
                     app:shapeAppearanceOverlay="@style/Button4">
@@ -207,7 +207,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:hint="Mobile Number"
+                    android:hint="@string/mobile_number_hint"
                     app:boxStrokeColor="#4E4A4A"
                     app:boxStrokeWidth="1dp"
                     app:shapeAppearanceOverlay="@style/Button4">
@@ -235,7 +235,7 @@
                 android:backgroundTint="@color/blueColor"
                 android:elevation="15dp"
                 android:gravity="center"
-                android:text="SIGN UP"
+                android:text="@string/signup_button_label"
                 android:textAllCaps="false"
                 android:textColor="@color/textColor"
                 android:textSize="17sp"

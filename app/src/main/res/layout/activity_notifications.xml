@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -22,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/back"
-            android:contentDescription="Back"
+            android:contentDescription="@string/back_button_description"
             android:background="?attr/selectableItemBackgroundBorderless"/>
 
         <!-- Title -->
@@ -30,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="NOTIFICATIONS"
+            android:text="@string/notifications_title"
             android:textSize="18sp"
             android:textColor="@android:color/white"
             android:gravity="center"/>
@@ -41,14 +42,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/filter"
-            android:contentDescription="Filter"
+            android:contentDescription="@string/filter_button_description"
             android:background="?attr/selectableItemBackgroundBorderless"/>
     </LinearLayout>
 
+    <!-- Recent Notifications -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Recent Notifications"
+        android:text="@string/recent_notifications"
         android:padding="8dp"
         android:background="@color/light_gray"
         android:textSize="16sp"
@@ -60,7 +62,7 @@
         android:id="@+id/tv_no_notifications"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="No notifications for this date."
+        android:text="@string/no_notifications"
         android:textSize="16sp"
         android:textColor="@android:color/darker_gray"
         android:gravity="center"
@@ -73,5 +75,3 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"/>
 </LinearLayout>
-
-

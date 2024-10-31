@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -18,7 +17,7 @@
             android:id="@+id/tv_recipient"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Recipient Name"
+            android:text="@string/recipient_name"
             android:textSize="16sp"
             android:textColor="@android:color/black"
             android:textStyle="bold"
@@ -32,7 +31,7 @@
             android:id="@+id/tv_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="R 100,00"
+            android:text="@string/payment_amount"
             android:textSize="16sp"
             android:textColor="@android:color/black"
             app:layout_constraintTop_toTopOf="parent"
@@ -40,26 +39,25 @@
             app:layout_constraintStart_toEndOf="@id/tv_recipient"/>
 
         <!-- Time -->
-
-        <!-- Details Button -->
         <TextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="48dp"
-            android:text="16:37 PM"
+            android:text="@string/time_text"
             android:textColor="@android:color/darker_gray"
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/btn_details"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Details Button -->
         <ImageButton
             android:id="@+id/btn_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/more"
-            android:contentDescription="Details"
+            android:contentDescription="@string/details_button_description"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -69,7 +67,7 @@
             android:id="@+id/tv_details"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Detailed information about this notification"
+            android:text="@string/additional_details_text"
             android:textSize="14sp"
             android:textColor="@android:color/black"
             android:visibility="gone"
@@ -79,8 +77,3 @@
             app:layout_constraintWidth_percent="1"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
-
-
-
-
-

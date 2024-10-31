@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">UkuthumelaImali_opscingxenye2</string>
+    <string name="web_client_id">433516101094-2muq1hlr39s22fn672j7beeursrkgth4.apps.googleusercontent.com</string>
+    <string name="action_settings">Izilungiselelo</string>
+    <string name="back_button_description">Buyela emuva</string>
+    <string name="next">Okulandelayo</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet...</string>
+    <string name="save_button_text">Londoloza</string>
+    <string name="previous">Okwedlule</string>
+    <string name="first_fragment_label">Ithrekhimenti Yokuqala</string>
+    <string name="second_fragment_label">Ithrekhimenti Yesibili</string>
+    <string name="card_holder_name">Igama Lomnikazi Wekhadi</string>
+
+    <!-- Common Labels -->
+    <string name="add_new_card_title">ENZA IKHADI ELISHA</string>
+    <string name="card_number_hint">Inombolo yekhadi</string>
+    <string name="card_holder_name_hint">Igama lomnikazi wekhadi</string>
+    <string name="expiration_date_hint">Usuku lokuphelelwa (NN/NY)</string>
+    <string name="cvv_hint">CVV</string>
+    <string name="add_button">ENZA</string>
+    <string name="add_card_description">Engeza Ikhadi</string>
+    <string name="filter_button_description">Hlunga</string>
+
+    <string name="theme_label">Itimu</string>
+    <string name="language_label">Ulimi</string>
+    <string name="currency_label">Imali</string>
+    <string name="logout_label">Phuma</string>
+
+    <!-- Content Descriptions -->
+    <string name="theme_icon_description">Isithonjana seThema</string>
+    <string name="language_icon_description">Isithonjana solimi</string>
+    <string name="currency_icon_description">Isithonjana semali</string>
+    <string name="logout_icon_description">Isithonjana Sokuphuma</string>
+    <string name="email_username_hint">Imeyili/Igama lomsebenzisi</string>
+
+    <string name="back_arrow_description">Umcibisholo Wokubuyisa</string>
+    <string name="my_account_title">I-AKHAWUNTI YAMI</string>
+
+    <string name="more_options_description">Izinketho eziningi</string>
+    <string name="cards_text">AMAKHADI</string>
+    <string name="notifications_text">IZAZISO</string>
+    <string name="qr_code_scanner_description">Isikena sekhodi ye-QR</string>
+    <string name="me_text">MINA</string>
+    <string name="settings_text">IZILUNGISELELO</string>
+
+    <string name="card_name_text">Igama Lekhadi</string>
+    <string name="masked_card_number">**** **** **** 1234</string>
+    <string name="selected_indicator_description">Inkomba Ekhethiwe</string>
+
+    <string name="login_text">NGENA</string>
+    <string name="signup_text">BHALISA</string>
+    <string name="enter_username_hint">Faka igama lomsebenzisi / imeyili</string>
+    <string name="login_button_text">NGENA</string>
+    <string name="or_text">OKANYE</string>
+    <string name="google_icon_description">Ngena ku-Google</string>
+
+    <string name="payment_amount">R 100,00</string>
+    <string name="time_text">16:37 PM</string>
+    <string name="details_button_description">Imininingwane</string>
+    <string name="additional_details_text">Imininingwane mayelana nalesi saziso</string>
+
+    <string name="cards_title">AMAKHADI</string>
+    <string name="add_new_card_text">Engeza ikhadi elisha</string>
+
+    <string name="notifications_title">IZAZISO</string>
+    <string name="recent_notifications">Izaziso Zakamuva</string>
+    <string name="no_notifications">Azikho izaziso ngalolu suku.</string>
+    <string name="filter_button">Hlunga</string>
+    <string name="settings_title">Izilungiselelo</string>
+    <string name="signup_button_text">BHALISA</string>
+    <string name="username_hint">Faka igama lomsebenzisi / imeyili</string>
+    <string name="dob_hint">Usuku Lokuzalwa</string>
+    <string name="signup_button_label">BHALISA</string>
+
+    <string name="theme">Itimu</string>
+    <string name="language">Ulimi</string>
+    <string name="currency">Imali</string>
+    <string name="log_out">Phuma</string>
+
+    <string name="recipient_name">Igama Lomamukeli</string>
+    <string name="amount">Inani</string>
+    <string name="time">Isikhathi</string>
+    <string name="details">Imininingwane</string>
+    <string name="my_account">I-AKHAWUNTI YAMI</string>
+    <string name="edit_profile_picture">HLELA</string>
+    <string name="first_name_hint">Igama Lokuqala</string>
+    <string name="last_name_hint">Isibongo</string>
+    <string name="date_of_birth_hint">Usuku Lokuzalwa</string>
+    <string name="email_hint">Imeyili/Igama lomsebenzisi</string>
+    <string name="password_hint">Iphasiwedi</string>
+    <string name="mobile_number_hint">Inombolo Yocingo</string>
+    <string name="save_button">GCINA</string>
+
+    <string name="login">NGENA</string>
+    <string name="sign_up">BHALISA</string>
+    <string name="enter_email_hint">Faka igama lomsebenzisi / imeyili</string>
+    <string name="enter_password_hint">Faka iphasiwedi yakho</string>
+
+</resources>

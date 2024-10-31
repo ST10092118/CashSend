@@ -9,7 +9,7 @@
         android:id="@+id/tv_card_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Card Name"
+        android:text="@string/card_name_text"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -18,7 +18,7 @@
         android:id="@+id/tv_card_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="**** **** **** 1234"
+        android:text="@string/masked_card_number"
         android:textSize="16sp"
         android:layout_marginTop="4dp" />
 
@@ -28,7 +28,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/selected"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:contentDescription="@string/selected_indicator_description" />
 </LinearLayout>
-
-

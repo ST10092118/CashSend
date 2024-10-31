@@ -30,13 +30,13 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/theme"
-            android:contentDescription="Theme Icon" />
+            android:contentDescription="@string/theme_icon_description" />
 
         <TextView
             android:id="@+id/tv_theme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Theme"
+            android:text="@string/theme_label"
             android:textSize="18sp"
             android:layout_marginStart="16dp"/>
     </LinearLayout>
@@ -56,13 +56,13 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/language"
-            android:contentDescription="Language Icon" />
+            android:contentDescription="@string/language_icon_description" />
 
         <TextView
             android:id="@+id/tv_language"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Language"
+            android:text="@string/language_label"
             android:textSize="18sp"
             android:layout_marginStart="16dp"/>
     </LinearLayout>
@@ -82,13 +82,13 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/currency"
-            android:contentDescription="Currency Icon" />
+            android:contentDescription="@string/currency_icon_description" />
 
         <TextView
             android:id="@+id/tv_currency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Currency"
+            android:text="@string/currency_label"
             android:textSize="18sp"
             android:layout_marginStart="16dp"/>
     </LinearLayout>
@@ -108,15 +108,14 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/logout"
-            android:contentDescription="Log Out Icon" />
+            android:contentDescription="@string/logout_icon_description" />
 
         <TextView
             android:id="@+id/tv_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Log out"
+            android:text="@string/logout_label"
             android:textSize="18sp"
             android:layout_marginStart="16dp"/>
     </LinearLayout>
 </LinearLayout>
-

@@ -1,13 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background"
-    >
+    android:background="@drawable/background">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -45,7 +42,7 @@
                     android:paddingLeft="15dp"
                     android:paddingTop="10dp"
                     android:paddingRight="15dp"
-                    android:text="LOGIN"
+                    android:text="@string/login_text"
                     android:textAlignment="center"
                     android:textColor="@color/textColor"
                     android:textSize="20sp"
@@ -62,13 +59,11 @@
                     android:paddingTop="10dp"
                     android:paddingRight="15dp"
                     android:paddingBottom="10dp"
-                    android:text="SIGN UP"
+                    android:text="@string/signup_text"
                     android:textAlignment="center"
                     android:textColor="@color/blueColor"
                     android:textSize="20sp"
                     android:textStyle="bold|normal" />
-
-
             </LinearLayout>
 
             <LinearLayout
@@ -87,7 +82,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:hint="Enter your username / email"
+                    android:hint="@string/enter_username_hint"
                     app:boxStrokeColor="#4E4A4A"
                     app:boxStrokeWidth="1dp"
                     app:shapeAppearanceOverlay="@style/Button4">
@@ -110,7 +105,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:hint="Enter your password"
+                    android:hint="@string/enter_password_hint"
                     app:boxStrokeColor="#4E4A4A"
                     app:boxStrokeWidth="1dp"
                     app:endIconMode="password_toggle"
@@ -139,7 +134,7 @@
                 android:backgroundTint="@color/redColor"
                 android:elevation="15dp"
                 android:gravity="center"
-                android:text="LOGIN"
+                android:text="@string/login_button_text"
                 android:textAllCaps="false"
                 android:textColor="@color/textColor"
                 android:textSize="17sp"
@@ -152,7 +147,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:gravity="center"
-                android:text="OR"
+                android:text="@string/or_text"
                 android:textAlignment="center"
                 android:textColor="#5A5858"
                 android:textSize="18sp"
@@ -171,15 +166,9 @@
                     android:layout_width="35dp"
                     android:layout_height="45dp"
                     android:layout_margin="10dp"
-                    android:src="@drawable/ic_google" />
-
+                    android:src="@drawable/ic_google"
+                    android:contentDescription="@string/google_icon_description" />
             </LinearLayout>
         </LinearLayout>
-
-
     </androidx.cardview.widget.CardView>
-
-
 </LinearLayout>
-
-
