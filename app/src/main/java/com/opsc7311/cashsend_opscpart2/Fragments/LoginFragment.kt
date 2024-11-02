@@ -101,6 +101,7 @@ class LoginFragment : Fragment() {
                     val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", 0)
                     sharedPreferences.edit().putString("user_email", email).apply()
 
+
                     Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
                     navigateToHomeScreen()
                 } else {

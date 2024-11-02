@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_amount"
-            app:layout_constraintWidth_percent="0.7"/>
+            app:layout_constraintWidth_percent="0.4"/>
 
         <!-- Payment Amount -->
         <TextView

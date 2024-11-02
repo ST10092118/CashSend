@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("com.google.gms.google-services")
+    id("kotlin-parcelize")
 
 }
 
@@ -32,6 +33,7 @@ android {
         buildFeatures {
             dataBinding = true
             viewBinding = true
+
         }
 
 
@@ -81,8 +83,10 @@ android {
         implementation ("com.google.mlkit:barcode-scanning:17.0.3")
         implementation ("com.squareup.retrofit2:retrofit:2.9.0")
         implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-        implementation("com.stripe:stripe-android:20.53.0")
+        implementation ("com.stripe:stripe-android:20.53.0")
         implementation("com.squareup.okhttp3:okhttp:4.9.3")
+        implementation ("androidx.biometric:biometric:1.1.0")
+
 
     }
 }
