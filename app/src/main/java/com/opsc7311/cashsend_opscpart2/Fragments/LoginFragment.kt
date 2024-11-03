@@ -1,5 +1,6 @@
 package com.opsc7311.cashsend_opscpart2.Fragments
 
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.IntentSender
 import android.os.Bundle
@@ -97,13 +98,23 @@ class LoginFragment : Fragment() {
                 response: Response<UserLoginResponse>
             ) {
                 if (response.isSuccessful && response.body()?.success == true) {
-                    // Save email to SharedPreferences after successful login
-                    val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", 0)
-                    sharedPreferences.edit().putString("user_email", email).apply()
+                    // Retrieve userId from the response body
+                    val userId = response.body()?.userId
+                    if (userId != null) {
+                        // Save userId and email to SharedPreferences after successful login
+                        val sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", MODE_PRIVATE)
 
 
-                    Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
-                    navigateToHomeScreen()
+                        sharedPreferences.edit()
+                            .putString("USER_ID", userId)
+                            .putString("user_email", email)
+                            .apply()
+
+                        Toast.makeText(requireContext(), "Login successful", Toast.LENGTH_SHORT).show()
+                        navigateToHomeScreen()
+                    } else {
+                        Toast.makeText(requireContext(), "Failed to retrieve user ID", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
                     Toast.makeText(
                         requireContext(),
@@ -119,6 +130,8 @@ class LoginFragment : Fragment() {
             }
         })
     }
+
+
 
 
     private fun signInWithGoogle() {

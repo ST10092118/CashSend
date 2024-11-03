@@ -1,19 +1,30 @@
 package com.example.opsc7312cashsend
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.OPSC7312CashSend.R
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class HomeScreenActivity : AppCompatActivity() {
+
+    private var userId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_screen)
+
+        // Retrieve userId from SharedPreferences
+        val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        userId = sharedPreferences.getString("USER_ID", null)
+
+        if (userId == null) {
+            Toast.makeText(this, "User ID not found. Please log in again.", Toast.LENGTH_SHORT).show()
+            finish() // Close activity if userId is not found
+            return
+        }
 
         val btnQRScanner: Button = findViewById(R.id.btn_cards)
         val btnNotifications: Button = findViewById(R.id.btn_notifications)
@@ -29,9 +40,9 @@ class HomeScreenActivity : AppCompatActivity() {
         // Navigate to Notifications Block on Home Screen
         btnNotifications.setOnClickListener {
             val intent = Intent(this, NotificationsActivity::class.java)
+            intent.putExtra("USER_ID", userId) // Pass the user ID
             startActivity(intent)
         }
-
 
         // User profile block click listener
         btnProfile.setOnClickListener {
@@ -46,5 +57,3 @@ class HomeScreenActivity : AppCompatActivity() {
         }
     }
 }
-
-

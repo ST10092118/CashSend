@@ -8,14 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.OPSC7312CashSend.R
 import com.google.gson.Gson
-import com.google.common.reflect.TypeToken
+import com.google.gson.reflect.TypeToken
 
 class NotificationsActivity : AppCompatActivity() {
 
     private lateinit var notificationsRecyclerView: RecyclerView
     private lateinit var notificationsAdapter: NotificationsAdapter
     private lateinit var noNotificationsTextView: TextView
-
     private var allNotifications = mutableListOf<Notification>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,19 +25,11 @@ class NotificationsActivity : AppCompatActivity() {
         notificationsRecyclerView.layoutManager = LinearLayoutManager(this)
         noNotificationsTextView = findViewById(R.id.tv_no_notifications)
 
-        // Load stored notifications from SharedPreferences
-        val sharedPreferences = getSharedPreferences("NotificationsPrefs", Context.MODE_PRIVATE)
-        val gson = Gson()
-        val json = sharedPreferences.getString("notifications", null)
-        val type = object : TypeToken<MutableList<Notification>>() {}.type
-        allNotifications = gson.fromJson(json, type) ?: mutableListOf()
+        // Load user ID from intent or shared preference (replace with actual logic as needed)
+        val userId = intent.getStringExtra("USER_ID") ?: return
 
-        // Check if there's a new notification from the intent
-        val newNotification: Notification? = intent.getParcelableExtra("NEW_NOTIFICATION")
-        if (newNotification != null) {
-            allNotifications.add(newNotification)
-            saveNotifications(allNotifications)
-        }
+        // Load stored notifications for this user
+        loadUserNotifications(userId)
 
         // Initialize the adapter with the notification list
         notificationsAdapter = NotificationsAdapter(allNotifications)
@@ -48,13 +39,12 @@ class NotificationsActivity : AppCompatActivity() {
         updateNoNotificationsText()
     }
 
-    private fun saveNotifications(notifications: MutableList<Notification>) {
+    private fun loadUserNotifications(userId: String) {
         val sharedPreferences = getSharedPreferences("NotificationsPrefs", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
         val gson = Gson()
-        val json = gson.toJson(notifications)
-        editor.putString("notifications", json)
-        editor.apply()
+        val json = sharedPreferences.getString("notifications_$userId", null)
+        val type = object : TypeToken<MutableList<Notification>>() {}.type
+        allNotifications = gson.fromJson(json, type) ?: mutableListOf()
     }
 
     private fun updateNoNotificationsText() {
