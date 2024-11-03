@@ -40,7 +40,7 @@ class AddingCardActivity : AppCompatActivity() {
         )
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:4242/") // Ensure this matches your server URL
+            .baseUrl("http://10.0.0.220:4242/") // Ensure this matches your server URL
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

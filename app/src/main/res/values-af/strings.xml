@@ -4,6 +4,7 @@
     <string name="app_name">Kontantstuur_opscdeel2</string>
     <string name="web_client_id">433516101094-2muq1hlr39s22fn672j7beeursrkgth4.apps.googleusercontent.com</string>
     <string name="action_settings">Instellings</string>
+    <string name="logo_description">CashSend Logo</string>
     <string name="back_button_description">Gaan terug</string>
     <string name="next">Volgende</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet...</string> <!-- No translation needed -->
@@ -12,6 +13,12 @@
     <string name="first_fragment_label">Eerste Fragment</string>
     <string name="second_fragment_label">Tweede Fragment</string>
     <string name="card_holder_name">Kaarthouer Naam</string>
+    <string name="payment_screen_title">Betalingskerm</string>
+    <string name="payment_prompt">Jy is op die punt om te betaal</string>
+    <string name="location_text">Ligging: </string>
+    <string name="amount_text">Bedrag: </string>
+    <string name="pay_button_text">Betaal</string>
+    <string name="cancel_button_text">Kanselleer</string>
     <!-- Common Labels -->
     <string name="add_new_card_title">VOEG NUWE KAART BY</string>
     <string name="card_number_hint">Kaartnommer</string>
@@ -38,7 +45,7 @@
     <string name="my_account_title">MY REKENING</string>
 
     <string name="more_options_description">Meer opsies</string>
-    <string name="cards_text">KAARTE</string>
+    <string name="qr_text">Skandeer QR-kode</string>
     <string name="notifications_text">KENNISGEWINGS</string>
     <string name="qr_code_scanner_description">QR-kode-leser</string>
     <string name="me_text">EK</string>

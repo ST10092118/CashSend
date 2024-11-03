@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    >
+    android:padding="16dp">
 
     <!-- Notifications Header -->
     <LinearLayout
@@ -17,33 +16,14 @@
         android:background="@color/blue"
         android:padding="10dp">
 
-        <!-- Back Button -->
-        <ImageButton
-            android:id="@+id/btn_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/back"
-            android:contentDescription="@string/back_button_description"
-            android:background="?attr/selectableItemBackgroundBorderless"/>
-
         <!-- Title -->
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="@string/notifications_title"
             android:textSize="18sp"
             android:textColor="@android:color/white"
             android:gravity="center"/>
-
-        <!-- Filter Button -->
-        <ImageButton
-            android:id="@+id/btn_filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/filter"
-            android:contentDescription="@string/filter_button_description"
-            android:background="?attr/selectableItemBackgroundBorderless"/>
     </LinearLayout>
 
     <!-- Recent Notifications -->

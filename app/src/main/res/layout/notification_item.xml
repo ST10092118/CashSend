@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:padding="8dp"
+    android:padding="12dp"
     app:cardElevation="4dp"
     android:background="@color/light_gray">
 
@@ -12,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- Recipient Name -->
+        <!-- Location (Recipient) -->
         <TextView
             android:id="@+id/tv_recipient"
             android:layout_width="0dp"
@@ -24,9 +25,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_amount"
-            app:layout_constraintWidth_percent="0.4"/>
+            app:layout_constraintWidth_percent="0.5" />
 
-        <!-- Payment Amount -->
+        <!-- Amount -->
         <TextView
             android:id="@+id/tv_amount"
             android:layout_width="wrap_content"
@@ -34,46 +35,24 @@
             android:text="@string/payment_amount"
             android:textSize="16sp"
             android:textColor="@android:color/black"
+            android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_time"
-            app:layout_constraintStart_toEndOf="@id/tv_recipient"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_recipient"
+            app:layout_constraintWidth_percent="0.4" />
 
-        <!-- Time -->
+        <!-- Time and Date -->
         <TextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="48dp"
+            android:layout_marginTop="8dp"
             android:text="@string/time_text"
             android:textColor="@android:color/darker_gray"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/btn_details"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- Details Button -->
-        <ImageButton
-            android:id="@+id/btn_details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/more"
-            android:contentDescription="@string/details_button_description"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <!-- Additional Details (Hidden by default) -->
-        <TextView
-            android:id="@+id/tv_details"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/additional_details_text"
             android:textSize="14sp"
-            android:textColor="@android:color/black"
-            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/tv_recipient"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintWidth_percent="1"/>
+            app:layout_constraintEnd_toEndOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

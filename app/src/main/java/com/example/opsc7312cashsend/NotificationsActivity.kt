@@ -1,21 +1,14 @@
 package com.example.opsc7312cashsend
 
-import android.app.DatePickerDialog
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.OPSC7312CashSend.R
-import com.google.common.reflect.TypeToken
 import com.google.gson.Gson
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
+import com.google.common.reflect.TypeToken
 
 class NotificationsActivity : AppCompatActivity() {
 
@@ -44,7 +37,6 @@ class NotificationsActivity : AppCompatActivity() {
         val newNotification: Notification? = intent.getParcelableExtra("NEW_NOTIFICATION")
         if (newNotification != null) {
             allNotifications.add(newNotification)
-            // Save the updated notifications list to SharedPreferences
             saveNotifications(allNotifications)
         }
 
@@ -52,9 +44,8 @@ class NotificationsActivity : AppCompatActivity() {
         notificationsAdapter = NotificationsAdapter(allNotifications)
         notificationsRecyclerView.adapter = notificationsAdapter
 
-        findViewById<ImageButton>(R.id.btn_back).setOnClickListener {
-            finish()
-        }
+        // Update the "No Notifications" visibility
+        updateNoNotificationsText()
     }
 
     private fun saveNotifications(notifications: MutableList<Notification>) {
@@ -66,44 +57,13 @@ class NotificationsActivity : AppCompatActivity() {
         editor.apply()
     }
 
-
-    private fun showDatePicker() {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-
-        // Create and show a DatePickerDialog
-        val datePickerDialog = DatePickerDialog(
-            this,
-            { _, selectedYear, selectedMonth, selectedDay ->
-                val selectedDate = Calendar.getInstance()
-                selectedDate.set(selectedYear, selectedMonth, selectedDay)
-                val formattedDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(selectedDate.time)
-
-                // Filter notifications by the selected date
-                filterNotificationsByDate(formattedDate)
-            },
-            year, month, day
-        )
-        datePickerDialog.show()
-    }
-
-    private fun filterNotificationsByDate(selectedDate: String) {
-        val filteredNotifications = allNotifications.filter {
-            it.date == selectedDate
-        }
-
-        if (filteredNotifications.isEmpty()) {
+    private fun updateNoNotificationsText() {
+        if (allNotifications.isEmpty()) {
             noNotificationsTextView.visibility = TextView.VISIBLE
             notificationsRecyclerView.visibility = RecyclerView.GONE
         } else {
             noNotificationsTextView.visibility = TextView.GONE
             notificationsRecyclerView.visibility = RecyclerView.VISIBLE
-            notificationsAdapter.updateData(filteredNotifications)
         }
     }
 }
-
-
-

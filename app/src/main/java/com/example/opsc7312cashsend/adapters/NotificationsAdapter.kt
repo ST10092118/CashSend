@@ -10,16 +10,15 @@ import com.example.OPSC7312CashSend.R
 class NotificationsAdapter(private var notifications: MutableList<Notification>) : RecyclerView.Adapter<NotificationsAdapter.NotificationViewHolder>() {
 
     inner class NotificationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val recipientTextView: TextView = itemView.findViewById(R.id.tv_recipient)
-        val amountTextView: TextView = itemView.findViewById(R.id.tv_amount)
-        val timeTextView: TextView = itemView.findViewById(R.id.tv_time)
-        // val detailsTextView: TextView = itemView.findViewById(R.id.tv_details)
+        private val recipientTextView: TextView = itemView.findViewById(R.id.tv_recipient)
+        private val amountTextView: TextView = itemView.findViewById(R.id.tv_amount)
+        private val timeTextView: TextView = itemView.findViewById(R.id.tv_time)
 
         fun bind(notification: Notification) {
-            recipientTextView.text = notification.location
-            amountTextView.text = notification.amount
-            timeTextView.text = "${notification.time} - ${notification.date}"
-            // detailsTextView.text = notification.details
+            // Display location, amount, and formatted time and date
+            recipientTextView.text = "Location: ${notification.location}"
+            amountTextView.text = "Amount: ${notification.amount}"
+            timeTextView.text = "Time: ${notification.time} on ${notification.date}"
         }
     }
 

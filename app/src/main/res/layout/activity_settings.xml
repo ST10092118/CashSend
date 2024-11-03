@@ -15,32 +15,6 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
-    <!-- Theme Setting Block -->
-    <LinearLayout
-        android:id="@+id/theme_block"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/block_background"
-        android:padding="16dp"
-        android:gravity="center_vertical">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/theme"
-            android:contentDescription="@string/theme_icon_description" />
-
-        <TextView
-            android:id="@+id/tv_theme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/theme_label"
-            android:textSize="18sp"
-            android:layout_marginStart="16dp"/>
-    </LinearLayout>
-
     <!-- Language Setting Block -->
     <LinearLayout
         android:id="@+id/language_block"
@@ -63,32 +37,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/language_label"
-            android:textSize="18sp"
-            android:layout_marginStart="16dp"/>
-    </LinearLayout>
-
-    <!-- Currency Setting Block -->
-    <LinearLayout
-        android:id="@+id/currency_block"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/block_background"
-        android:padding="16dp"
-        android:gravity="center_vertical">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/currency"
-            android:contentDescription="@string/currency_icon_description" />
-
-        <TextView
-            android:id="@+id/tv_currency"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/currency_label"
             android:textSize="18sp"
             android:layout_marginStart="16dp"/>
     </LinearLayout>

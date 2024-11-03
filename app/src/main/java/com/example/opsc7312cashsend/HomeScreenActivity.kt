@@ -1,6 +1,5 @@
 package com.example.opsc7312cashsend
 
-import MyAccountFragment
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -16,22 +15,14 @@ class HomeScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_screen)
 
-        // Bind UI elements
-        val btnMore: ImageButton = findViewById(R.id.more)
-        val btnCards: Button = findViewById(R.id.btn_cards)
+        val btnQRScanner: Button = findViewById(R.id.btn_cards)
         val btnNotifications: Button = findViewById(R.id.btn_notifications)
-        val btnQRScanner: FloatingActionButton = findViewById(R.id.btn_qr_scanner)
         val btnProfile: Button = findViewById(R.id.btn_profile)
         val btnSettings: Button = findViewById(R.id.btn_settings)
 
-         //"More" button click listener
-        btnMore.setOnClickListener {
-            Toast.makeText(this, "More features coming soon!", Toast.LENGTH_SHORT).show()
-        }
-
         // Cards block click listener - Navigate to CardSelectionActivity
-        btnCards.setOnClickListener {
-            val intent = Intent(this, AddingCardActivity::class.java)
+        btnQRScanner.setOnClickListener {
+            val intent = Intent(this, QrScannerActivity::class.java)
             startActivity(intent)
         }
 
@@ -41,12 +32,6 @@ class HomeScreenActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // QR code scanner button click listener
-        btnQRScanner.setOnClickListener {
-            val intent = Intent(this, QrScannerActivity::class.java)
-            startActivity(intent)
-            // Open QR code scanner activity here
-        }
 
         // User profile block click listener
         btnProfile.setOnClickListener {

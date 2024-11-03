@@ -37,11 +37,6 @@ class SettingsActivity : AppCompatActivity() {
             finish() // Navigate back to the previous screen
         }
 
-        // Theme Button
-        val themeBlock = findViewById<LinearLayout>(R.id.theme_block)
-        themeBlock.setOnClickListener {
-            Toast.makeText(this, "This feature will be available soon!", Toast.LENGTH_SHORT).show()
-        }
 
         // Language Button
         val languageBlock = findViewById<LinearLayout>(R.id.language_block)
@@ -49,11 +44,6 @@ class SettingsActivity : AppCompatActivity() {
             showLanguageDialog() // Show language selection dialog
         }
 
-        // Currency Button
-        val currencyBlock = findViewById<LinearLayout>(R.id.currency_block)
-        currencyBlock.setOnClickListener {
-            Toast.makeText(this, "This feature will be available soon!", Toast.LENGTH_SHORT).show()
-        }
 
         // Log out Button
         val logoutBlock = findViewById<LinearLayout>(R.id.logout_block)
@@ -94,10 +84,14 @@ class SettingsActivity : AppCompatActivity() {
         config.setLocale(locale)
         resources.updateConfiguration(config, resources.displayMetrics)
 
+        // Show toast message to inform user to log out and log in again
+        Toast.makeText(this, "Please logout and login again for changes to take effect", Toast.LENGTH_SHORT).show()
+
         // Restart activity to apply changes
         val intent = Intent(this, SettingsActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
         finish()
     }
+
 }

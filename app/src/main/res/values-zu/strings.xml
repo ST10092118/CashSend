@@ -4,6 +4,7 @@
     <string name="app_name">UkuthumelaImali_opscingxenye2</string>
     <string name="web_client_id">433516101094-2muq1hlr39s22fn672j7beeursrkgth4.apps.googleusercontent.com</string>
     <string name="action_settings">Izilungiselelo</string>
+    <string name="logo_description">CashSend Logo</string>
     <string name="back_button_description">Buyela emuva</string>
     <string name="next">Okulandelayo</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet...</string>
@@ -12,7 +13,12 @@
     <string name="first_fragment_label">Ithrekhimenti Yokuqala</string>
     <string name="second_fragment_label">Ithrekhimenti Yesibili</string>
     <string name="card_holder_name">Igama Lomnikazi Wekhadi</string>
-
+    <string name="payment_screen_title">Isikrini Sokukhokha</string>
+    <string name="payment_prompt">Usuzokhokha</string>
+    <string name="location_text">Indawo: </string>
+    <string name="amount_text">Inani: </string>
+    <string name="pay_button_text">Khokha</string>
+    <string name="cancel_button_text">Khansela</string>
     <!-- Common Labels -->
     <string name="add_new_card_title">ENZA IKHADI ELISHA</string>
     <string name="card_number_hint">Inombolo yekhadi</string>
@@ -39,7 +45,7 @@
     <string name="my_account_title">I-AKHAWUNTI YAMI</string>
 
     <string name="more_options_description">Izinketho eziningi</string>
-    <string name="cards_text">AMAKHADI</string>
+    <string name="qr_text">Hlola ikhodi ye-QR</string>
     <string name="notifications_text">IZAZISO</string>
     <string name="qr_code_scanner_description">Isikena sekhodi ye-QR</string>
     <string name="me_text">MINA</string>
