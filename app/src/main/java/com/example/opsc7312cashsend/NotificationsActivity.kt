@@ -1,14 +1,18 @@
 package com.example.opsc7312cashsend
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.OPSC7312CashSend.R
+import com.google.common.reflect.TypeToken
+import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -25,30 +29,43 @@ class NotificationsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notifications)
 
-        // Set up RecyclerView
         notificationsRecyclerView = findViewById(R.id.rv_notifications)
         notificationsRecyclerView.layoutManager = LinearLayoutManager(this)
         noNotificationsTextView = findViewById(R.id.tv_no_notifications)
 
-        // Retrieve the notification from the intent if it exists
+        // Load stored notifications from SharedPreferences
+        val sharedPreferences = getSharedPreferences("NotificationsPrefs", Context.MODE_PRIVATE)
+        val gson = Gson()
+        val json = sharedPreferences.getString("notifications", null)
+        val type = object : TypeToken<MutableList<Notification>>() {}.type
+        allNotifications = gson.fromJson(json, type) ?: mutableListOf()
+
+        // Check if there's a new notification from the intent
         val newNotification: Notification? = intent.getParcelableExtra("NEW_NOTIFICATION")
-        newNotification?.let {
-            allNotifications.add(it) // Add new notification to the list
+        if (newNotification != null) {
+            allNotifications.add(newNotification)
+            // Save the updated notifications list to SharedPreferences
+            saveNotifications(allNotifications)
         }
 
+        // Initialize the adapter with the notification list
         notificationsAdapter = NotificationsAdapter(allNotifications)
         notificationsRecyclerView.adapter = notificationsAdapter
 
-        // Handle Back button click
         findViewById<ImageButton>(R.id.btn_back).setOnClickListener {
             finish()
         }
-
-        // Show DatePicker when Filter button is clicked
-        findViewById<ImageButton>(R.id.btn_filter).setOnClickListener {
-            showDatePicker()
-        }
     }
+
+    private fun saveNotifications(notifications: MutableList<Notification>) {
+        val sharedPreferences = getSharedPreferences("NotificationsPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        val gson = Gson()
+        val json = gson.toJson(notifications)
+        editor.putString("notifications", json)
+        editor.apply()
+    }
+
 
     private fun showDatePicker() {
         val calendar = Calendar.getInstance()

@@ -40,7 +40,7 @@ class AddingCardActivity : AppCompatActivity() {
         )
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.1.7:4242/") // Ensure this matches your server URL
+            .baseUrl("http://10.0.2.2:4242/") // Ensure this matches your server URL
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -181,7 +181,7 @@ class AddingCardActivity : AppCompatActivity() {
                     Toast.makeText(this, "Payment was canceled", Toast.LENGTH_SHORT).show()
                 }
                 Log.d("PaymentIntent", "Payment canceled")
-                navigateToHome() // Navigate to home on cancel
+                navigateToHome()
             }
 
             is PaymentResult.Completed -> {
@@ -190,6 +190,7 @@ class AddingCardActivity : AppCompatActivity() {
                 }
                 Log.d("PaymentIntent", "Payment successful")
                 navigateToHome() // Navigate to home on success
+
             }
         }
     }
