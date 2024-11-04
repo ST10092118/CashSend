@@ -86,6 +86,12 @@ android {
         implementation ("com.stripe:stripe-android:20.53.0")
         implementation("com.squareup.okhttp3:okhttp:4.9.3")
         implementation ("androidx.biometric:biometric:1.1.0")
+        implementation ("com.google.firebase:firebase-messaging-ktx:23.0.0")
+        implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
+        implementation ("com.squareup.moshi:moshi:1.12.0")
+        implementation ("androidx.compose.runtime:runtime:1.5.1")
+        implementation ("androidx.compose.ui:ui:1.5.1")
+        implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
 
 
     }
@@ -95,5 +101,5 @@ dependencies {
     implementation(libs.androidx.camera.lifecycle)
     implementation(libs.androidx.camera.view)
     implementation(libs.firebase.firestore.ktx)
+    implementation(libs.firebase.messaging)
 }
-

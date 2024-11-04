@@ -1,5 +1,6 @@
 package com.example.opsc7312cashsend
 
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
+import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.example.OPSC7312CashSend.R
 import com.stripe.android.PaymentConfiguration
@@ -40,7 +42,7 @@ class AddingCardActivity : AppCompatActivity() {
         )
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.0.220:4242/") // Ensure this matches your server URL
+            .baseUrl("http://192.168.1.7:4242/") // Ensure this matches your server URL
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -166,14 +168,12 @@ class AddingCardActivity : AppCompatActivity() {
         when (result) {
             is PaymentResult.Failed -> {
                 runOnUiThread {
-                    Toast.makeText(
-                        this,
-                        "Payment failed: ${result.throwable.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this, "Payment failed: ${result.throwable.message}", Toast.LENGTH_SHORT).show()
                 }
                 Log.e("PaymentIntent", "Payment failed: ${result.throwable}")
                 navigateToHome() // Navigate to home on failure
+                // Optionally send a local notification here for immediate feedback
+                sendLocalNotification("Payment failed", result.throwable.message ?: "Unknown error")
             }
 
             is PaymentResult.Canceled -> {
@@ -181,7 +181,9 @@ class AddingCardActivity : AppCompatActivity() {
                     Toast.makeText(this, "Payment was canceled", Toast.LENGTH_SHORT).show()
                 }
                 Log.d("PaymentIntent", "Payment canceled")
-                navigateToHome()
+                navigateToHome() // Navigate to home on cancel
+                // Optionally send a local notification here for immediate feedback
+                sendLocalNotification("Payment canceled", "Your payment has been canceled.")
             }
 
             is PaymentResult.Completed -> {
@@ -190,10 +192,23 @@ class AddingCardActivity : AppCompatActivity() {
                 }
                 Log.d("PaymentIntent", "Payment successful")
                 navigateToHome() // Navigate to home on success
-
+                sendLocalNotification("Payment successful", "Your payment was processed successfully.")
             }
         }
     }
+
+    private fun sendLocalNotification(title: String, message: String) {
+        val notificationBuilder = NotificationCompat.Builder(this, "payments_channel")
+            .setSmallIcon(R.drawable.ic_notifications45)
+            .setContentTitle(title)
+            .setContentText(message)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setAutoCancel(true)
+
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.notify(System.currentTimeMillis().toInt(), notificationBuilder.build())
+    }
+
 
     private fun navigateToHome() {
         val intent = Intent(this, HomeScreenActivity::class.java)
@@ -202,3 +217,4 @@ class AddingCardActivity : AppCompatActivity() {
         finish()
     }
 }
+
