@@ -26,7 +26,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class AddingCardActivity : AppCompatActivity() {
-
+//
     private lateinit var cardInputWidget: CardInputWidget
     private lateinit var paymentLauncher: PaymentLauncher
     private lateinit var apiService: StripeApiService
