@@ -23,7 +23,7 @@ object RetrofitInstance {
 }
 
 object StripeApiInstance {
-    private const val BASE_URL = "https://stripe-payment-cvjx.onrender.com"  // URL for Stripe payments
+    private const val BASE_URL = "https://cardsapi-btbl.onrender.com"  // URL for Stripe payments
 
     val api: StripeApiService by lazy {
         Retrofit.Builder()

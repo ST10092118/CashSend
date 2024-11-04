@@ -42,7 +42,7 @@ class AddingCardActivity : AppCompatActivity() {
         )
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.1.7:4242/") // Ensure this matches your server URL
+            .baseUrl("https://cardsapi-btbl.onrender.com/") // Ensure this matches your server URL
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
