@@ -18,6 +18,15 @@ import java.util.Locale
 
 class QrResultActivity : AppCompatActivity() {
 
+    //This code was adapted from StackOverflow
+    //https://stackoverflow.com/questions/9605913/how-do-i-parse-json-in-android
+    //bbedward
+    //https://stackoverflow.com/users/1130760/bbedward
+
+    //This code was adapted from StackOverflow
+    //https://stackoverflow.com/questions/26460924/need-help-switching-between-activities#:~:text=in%20Android%20you%20can%20switch,the%20Activities%20of%20you%20app.
+    //Md. Shahadat Sarker
+    //https://stackoverflow.com/users/2342904/md-shahadat-sarker
     private var userId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +55,13 @@ class QrResultActivity : AppCompatActivity() {
                 date = currentDate
             )
 
-            findViewById<TextView>(R.id.locationTextView).text = "Location: $location"
-            findViewById<TextView>(R.id.amountTextView).text = "Amount: R $amount"
+            findViewById<TextView>(R.id.locationTextView).text = getString(R.string.location_text, location)
+            findViewById<TextView>(R.id.amountTextView).text = getString(R.string.amount_text, amount)
+
+            // For displaying messages
+            Toast.makeText(this, getString(R.string.user_id_not_found), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.qr_parse_error), Toast.LENGTH_SHORT).show()
+
 
             // Handle Cancel button click
             findViewById<Button>(R.id.cancelButton).setOnClickListener {

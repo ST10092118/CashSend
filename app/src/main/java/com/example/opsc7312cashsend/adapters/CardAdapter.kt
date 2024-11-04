@@ -22,6 +22,9 @@ class CardAdapter(
         return CardViewHolder(view)
     }
 
+    //this code was adapted from GeeksForGeeks
+    //https://www.geeksforgeeks.org/how-to-select-single-radiobutton-in-android-recyclerview/
+
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         val card = cardList[position]
         holder.bind(card)
@@ -29,10 +32,9 @@ class CardAdapter(
         // Set the selected card when item is clicked
         holder.itemView.setOnClickListener {
             selectedCard = card
-            notifyDataSetChanged() // Refresh selection state
+            notifyDataSetChanged()
             onCardSelected(card)
         }
-
         // Update the RadioButton's checked state based on selection
         holder.radioButton.isChecked = card == selectedCard
     }

@@ -26,7 +26,8 @@ class NotificationsAdapter(private var notifications: MutableList<Notification>)
         val view = LayoutInflater.from(parent.context).inflate(R.layout.notification_item, parent, false)
         return NotificationViewHolder(view)
     }
-
+    //this code was adapted from GeeksForGeeks
+    //https://www.geeksforgeeks.org/how-to-select-single-radiobutton-in-android-recyclerview/
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
         holder.bind(notifications[position])
     }

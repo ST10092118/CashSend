@@ -12,6 +12,10 @@ import com.google.gson.reflect.TypeToken
 
 class NotificationsActivity : AppCompatActivity() {
 
+    //This code was adapted from StackOverflow
+    //https://stackoverflow.com/questions/7145606/how-do-you-save-store-objects-in-sharedpreferences-on-android
+    //Muhammad Aamir Ali
+    //https://stackoverflow.com/users/1531657/muhammad-aamir-ali
     private lateinit var notificationsRecyclerView: RecyclerView
     private lateinit var notificationsAdapter: NotificationsAdapter
     private lateinit var noNotificationsTextView: TextView

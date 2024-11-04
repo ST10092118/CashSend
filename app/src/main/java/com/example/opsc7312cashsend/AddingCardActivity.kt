@@ -25,6 +25,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class AddingCardActivity : AppCompatActivity() {
 
+    //This code was adapted from StackOverflow and github
+    //https://stackoverflow.com/questions/76380893/paymentconfiguration-is-not-recognized-in-android-studio-java
+    //https://github.com/stripe/stripe-android/issues/6250
+    //karllekko
+    //https://stackoverflow.com/users/9769731/karllekko
+
+    //This code was adapted from StackOverflow
+    //https://stackoverflow.com/questions/74332153/android-studio-how-to-create-biometricmanager-and-other-bugs
+    //Antonio
+    //https://stackoverflow.com/users/15511167/antonio
     private lateinit var cardInputWidget: CardInputWidget
     private lateinit var paymentLauncher: PaymentLauncher
     private lateinit var apiService: StripeApiService

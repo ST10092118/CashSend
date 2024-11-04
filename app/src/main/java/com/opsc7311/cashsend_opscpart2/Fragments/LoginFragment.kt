@@ -30,6 +30,10 @@ import retrofit2.Response
 
 class LoginFragment : Fragment() {
 
+    //This code was adapted from Stack Overflow
+    //https://stackoverflow.com/questions/18372870/how-to-display-multiple-images-in-a-grid-column-in-gwt-gxt
+    //Bernard Hauzeur
+    //https://stackoverflow.com/users/3784642/bernard-hauzeur
     private lateinit var emailInput: EditText
     private lateinit var passwordInput: EditText
     private lateinit var loginButton: Button
@@ -135,7 +139,7 @@ class LoginFragment : Fragment() {
 
 
     private fun signInWithGoogle() {
-        /*   lifecycleScope.launch {
+          lifecycleScope.launch {
             // Attempt to get the IntentSender for the Google sign-in request
             val intentSender = googleAuthUIClient.signin()
 
@@ -171,8 +175,8 @@ class LoginFragment : Fragment() {
         }
     }
 
-*/
-    }
+
+
 
     private fun navigateToHomeScreen() {
         val intent = Intent(requireActivity(), HomeScreenActivity::class.java)

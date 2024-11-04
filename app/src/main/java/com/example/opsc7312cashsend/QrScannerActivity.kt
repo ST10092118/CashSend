@@ -6,7 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
-import android.util.Size
+import android.view.Surface
 import android.widget.Toast
 import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +23,10 @@ import java.util.concurrent.Executors
 
 class QrScannerActivity : AppCompatActivity() {
 
+    //This code was adapted from StackOverflow
+    //https://stackoverflow.com/questions/57229512/finding-documents-with-in-using-an-array-of-another-document
+    //whoami - fakeFaceTrueSoul
+    //https://stackoverflow.com/users/7237613/whoami-fakefacetruesoul
     private lateinit var cameraExecutor: ExecutorService
     private var isProcessing = false
     private var isIntentLaunched = false
@@ -57,7 +61,7 @@ class QrScannerActivity : AppCompatActivity() {
 
             // Configure ImageAnalysis
             val imageAnalysis = ImageAnalysis.Builder()
-                .setTargetResolution(Size(1280, 720))
+                .setTargetRotation(Surface.ROTATION_0) // Set rotation based on device orientation
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                 .build()
 

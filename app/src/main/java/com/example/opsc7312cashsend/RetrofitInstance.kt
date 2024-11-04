@@ -3,7 +3,12 @@ package com.example.opsc7312cashsend
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 object RetrofitInstance {
+    // This code was adapted from Stack Overflow
+    //https://stackoverflow.com/questions/45790554/retrofit-implementation-in-kotlin-method-default-parameter
+    //s1m0nw1
+    //https://stackoverflow.com/users/8073652/s1m0nw1
     private const val BASE_URL =
         "https://cashsendapi.onrender.com"  // Check this is correct and accessible
 

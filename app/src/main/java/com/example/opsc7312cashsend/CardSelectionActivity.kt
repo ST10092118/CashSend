@@ -19,6 +19,10 @@ import retrofit2.Response
 
 class CardSelectionActivity : AppCompatActivity() {
 
+    //This code was adapted from StackOverflow
+    //https://stackoverflow.com/questions/53976480/android-retrofit-display-in-recyclerview
+    //Martin Zeitler
+    //https://stackoverflow.com/users/549372/martin-zeitler
     private lateinit var recyclerViewCards: RecyclerView
     private lateinit var btnAddCard: ImageButton
     private lateinit var btnBack: ImageButton

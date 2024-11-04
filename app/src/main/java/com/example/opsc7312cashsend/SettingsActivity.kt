@@ -16,6 +16,9 @@ import com.opsc7311.cashsend_opscpart2.MainActivity
 import java.util.*
 
 class SettingsActivity : AppCompatActivity() {
+    // This code was adapted from Stack Overflow
+    // https://stackoverflow.com/questions/2900023/change-app-language-programmatically-in-android
+    // icyerasor - https://stackoverflow.com/users/314089/icyerasor
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
 
@@ -37,13 +40,11 @@ class SettingsActivity : AppCompatActivity() {
             finish() // Navigate back to the previous screen
         }
 
-
         // Language Button
         val languageBlock = findViewById<LinearLayout>(R.id.language_block)
         languageBlock.setOnClickListener {
             showLanguageDialog() // Show language selection dialog
         }
-
 
         // Log out Button
         val logoutBlock = findViewById<LinearLayout>(R.id.logout_block)
@@ -80,12 +81,15 @@ class SettingsActivity : AppCompatActivity() {
     private fun setLocale(languageCode: String) {
         val locale = Locale(languageCode)
         Locale.setDefault(locale)
+
         val config = Configuration()
         config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
 
-        // Show toast message to inform user to log out and log in again
-        Toast.makeText(this, "Please logout and login again for changes to take effect", Toast.LENGTH_SHORT).show()
+        // Use applyOverrideConfiguration to apply the new configuration
+        applyOverrideConfiguration(config)
+
+        // Inform user to log out and log in again for changes to take effect
+        Toast.makeText(this, getString(R.string.language_change_message), Toast.LENGTH_SHORT).show()
 
         // Restart activity to apply changes
         val intent = Intent(this, SettingsActivity::class.java)
@@ -93,5 +97,4 @@ class SettingsActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
 }

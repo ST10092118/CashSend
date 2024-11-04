@@ -19,6 +19,15 @@ import retrofit2.Response
 
 class RegisterFragment : Fragment() {
 
+    //This code was adapted from Stack Overflow
+    //https://stackoverflow.com/questions/18372870/how-to-display-multiple-images-in-a-grid-column-in-gwt-gxt
+    //Bernard Hauzeur
+    //https://stackoverflow.com/users/3784642/bernard-hauzeur
+
+    //This code was adapted from StackOverflow
+    //https://stackoverflow.com/questions/26460924/need-help-switching-between-activities#:~:text=in%20Android%20you%20can%20switch,the%20Activities%20of%20you%20app.
+    //Md. Shahadat Sarker
+    //https://stackoverflow.com/users/2342904/md-shahadat-sarker
     private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(

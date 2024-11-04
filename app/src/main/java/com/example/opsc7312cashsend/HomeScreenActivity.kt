@@ -10,6 +10,10 @@ import com.example.OPSC7312CashSend.R
 
 class HomeScreenActivity : AppCompatActivity() {
 
+    //This code was adapted from StackOverflow
+    //https://stackoverflow.com/questions/26460924/need-help-switching-between-activities#:~:text=in%20Android%20you%20can%20switch,the%20Activities%20of%20you%20app.
+    //Md. Shahadat Sarker
+    //https://stackoverflow.com/users/2342904/md-shahadat-sarker
     private var userId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

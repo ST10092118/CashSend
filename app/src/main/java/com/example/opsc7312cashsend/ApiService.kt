@@ -19,7 +19,10 @@ data class User(
     val password: String
 )
 
-
+//This code was adapted from StackOverflow
+//https://stackoverflow.com/questions/47511962/how-to-send-post-request-in-retrofit-2-android
+//Murat Güç
+//https://stackoverflow.com/users/7393603/murat-g%c3%bc%c3%a7
 
 interface ApiService {
     @POST("api/loginUser")

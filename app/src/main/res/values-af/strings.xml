@@ -4,6 +4,11 @@
     <string name="app_name">Kontantstuur_opscdeel2</string>
     <string name="web_client_id">433516101094-2muq1hlr39s22fn672j7beeursrkgth4.apps.googleusercontent.com</string>
     <string name="action_settings">Instellings</string>
+    <string name="location_text">Ligging: %1$s</string>
+    <string name="amount_text">Bedrag: R %1$s</string>
+    <string name="user_id_not_found">Gebruiker-ID nie gevind nie. Meld asseblief weer aan.</string>
+    <string name="qr_parse_error">Kon nie QR-kode data verwerk nie</string>
+    <string name="language_change_message">Meld asseblief af en meld weer aan vir veranderinge om in werking te tree</string>
     <string name="logo_description">CashSend Logo</string>
     <string name="back_button_description">Gaan terug</string>
     <string name="next">Volgende</string>
@@ -15,8 +20,6 @@
     <string name="card_holder_name">Kaarthouer Naam</string>
     <string name="payment_screen_title">Betalingskerm</string>
     <string name="payment_prompt">Jy is op die punt om te betaal</string>
-    <string name="location_text">Ligging: </string>
-    <string name="amount_text">Bedrag: </string>
     <string name="pay_button_text">Betaal</string>
     <string name="cancel_button_text">Kanselleer</string>
     <!-- Common Labels -->
